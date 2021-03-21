@@ -1,8 +1,9 @@
-// Import stylesheets
+// DataArt JS 2 - Kolesnikov. E.A.
+
 //import "./style.css";
 
 const daysArray = [];
-let currencyArray = [];
+let rates = {};
 let base = null;
 let date = null;
 let days = 4;
@@ -32,43 +33,23 @@ function createRatesTable () {
   const div = document.createElement("table");
   div.classList.add("rateTable");
   appRates.appendChild(div);
-  // currencyArray.forEach(element => {
-  //   console.log('element');
-  // });
-  const html = `<tr><td>3</td><td>3</td></tr>`;
-  div.innerHTML = html;
+  for (let key in rates) {
+    // console.log( "Key: " + key + " Value: " + rates[key]);
+    let flagText = key.toLocaleLowerCase().substring(0, 2);
+    let flagImgTag = `<img src="https://flagcdn.com/20x15/${flagText}.png">`
+    let html = `<tr><td>${flagImgTag}</td><td>${key}</td><td>${rates[key]}</td></tr>`;
+    div.innerHTML += html;
+  }
 } 
-
-
-const getJsonFlags = () => {
-    let promise = fetch(`https://flagcdn.com/en/codes.json`)
-    .then (response => response.json())
-    .then (data => console.log(data)); 
-}
-
-
 
 const getJsonRates = async (date) => {
   let response = await fetch(`https://api.exchangeratesapi.io/${date}?base=RUB`);
   if (response.ok) {
-    let result = await response.json();
-    console.log(result);
-    // console.log(result.rates);
-    let ratesArray = result.rates;
-    base = result.base;
-    date = result.date;
-
-    for (let [key, value] of Object.entries(ratesArray)) {
-      // console.log(`${key}: ${value}`);
-      // currencyArray.push([key, value]);
-      currencyArray.push({[key]: value});
-    }
-
-    // for (const rate in ratesArray) {
-    //   currencyArray[currencyArray.length] = {
-    //     [rate]: ratesArray[rate]
-    //   }
-    // }
+    let json = await response.json();
+    console.log(json);
+    base = json.base;
+    date = json.date;
+    rates = json.rates;
 
     // for (const key of Object.entries(ratesArray)) {
     //   console.log(key);
@@ -77,12 +58,14 @@ const getJsonRates = async (date) => {
 
     // console.log(base);
     // console.log(date);
+    // console.log(rates);
     // console.log(Object.fromEntries(Object.entries(ratesArray)));
-    // console.log(currencyArray);
+
   } else {
     console.log("Error HTTP: " + response.status);
   }
-  console.log(currencyArray);
+  console.log(rates);
+  createRatesTable();
 }
 
 function createDatesArray(days) {
@@ -111,8 +94,12 @@ function createDatesArray(days) {
   console.log(daysArray);
 }
 
+// const getJsonFlags = () => {
+//     let promise = fetch(`https://flagcdn.com/en/codes.json`)
+//     .then (response => response.json())
+//     .then (data => console.log(data)); 
+// }
+
 createDatesArray(days);
 createButtons();
 getJsonRates('2021-03-20');
-getJsonFlags();
-createRatesTable();
