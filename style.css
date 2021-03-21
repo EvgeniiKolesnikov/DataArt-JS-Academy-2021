@@ -1,3 +1,162 @@
+*, *:before, *:after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  border: 0;
+}
+
+#appRates {
+  width: 100%;
+  
+  text-align: center;
+}
 h1, h2 {
   font-family: Lato;
+}
+#header {
+  margin: 5px;
+}
+.baseButton {
+  margin: 5px;
+}
+
+.dateButtons{
+ margin: 15px;
+}
+
+.dateButton {
+  display: inline-block;
+  font-family: arial,sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  color: rgb(68,68,68);
+  text-decoration: none;
+  user-select: none;
+  padding: .2em 1.2em;
+  outline: none;
+  border: 1px solid rgba(0,0,0,.1);
+  border-radius: 2px;
+  background: rgb(245,245,245) linear-gradient(#f4f4f4, #f1f1f1);
+  transition: all .218s ease 0s;
+  margin: 2px 3px;
+}
+.dateButton:hover {
+  color: rgb(24,24,24);
+  border: 1px solid rgb(198,198,198);
+  background: #f7f7f7 linear-gradient(#f7f7f7, #f1f1f1);
+  box-shadow: 0 1px 2px rgba(0,0,0,.1);
+}
+.dateButton:active {
+  color: rgb(51,51,51);
+  border: 1px solid rgb(204,204,204);
+  background: rgb(238,238,238) linear-gradient(rgb(238,238,238), rgb(224,224,224));
+  box-shadow: 0 1px 2px rgba(0,0,0,.1) inset;
+}
+
+
+table {
+  border-spacing: 0;
+  empty-cells: hide;
+  margin: 0 auto;
+  font-family: Calibri;
+}
+
+td {
+  font-size: 14px;
+  padding: 3px 10px;
+  text-align: center;
+  border-bottom: 1px solid #ffffff;
+  transition: all 0.2s linear;
+}
+td:first-child {
+  width: 10px;
+}
+td:nth-child(2) {
+  width: 55px;
+}
+td:nth-child(3) {
+  width: 150px;
+}
+td:nth-child(4) {
+  width: 170px;
+}
+
+th {
+  font-size: 14px;
+  padding: 5px 12px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+th:nth-child(odd) {
+  background: #f3f7fb;
+}
+th:nth-child(even) {
+  background: #eff5ff;
+}
+th:first-child {
+  background: #fdf5d0;
+}
+
+/* td:nth-child(odd) {
+  background: #ffffff;
+}
+td:nth-child(even) {
+  background: #f7fbff;
+} */
+
+
+tbody:nth-child(odd) {
+  background: #ffffff;
+}
+tbody:nth-child(even) {
+  background: #f7fbff;
+}
+
+
+
+
+.round-top {
+  border-top-left-radius: 5px;
+}
+
+.round-bottom {
+  border-bottom-left-radius: 5px;
+}
+
+tr:hover td {
+  background: #e6ecf3;
+  font-weight: bold;
+}
+
+
+input[type=radio] {
+  display: none;
+}
+
+label {
+  display: inline-block;
+
+  font-size: 12px;
+  padding: .2em 1.2em;
+  border: 1px solid rgba(0, 0, 0, .1);
+  border-radius: 2px;
+  background: rgb(245, 245, 245) linear-gradient(#f4f4f4, #f1f1f1);
+  margin: 10px 2px 0px;
+}
+
+/* Checked */
+input[type=radio]:checked+label {
+  background: #d3d3d3;
+}
+
+/* Hover */
+label:hover {
+  color: #666;
+}
+
+/* Disabled */
+input[type=radio]:disabled+label {
+  background: #efefef;
+  color: #666;
 }
