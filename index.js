@@ -1,7 +1,8 @@
 // DataArt JS 2 - Kolesnikov. E.A.
-
 //import "./style.css";
-document.querySelector('head').innerHTML ='<link rel="stylesheet" type="text/css" href="style.css">';
+
+document.querySelector('head').innerHTML =
+  `<link rel="stylesheet" type="text/css" href="style.css">`;
 const daysArray = [];
 let rates = {};
 let base = "RUB";
