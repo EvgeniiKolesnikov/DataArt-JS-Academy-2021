@@ -1,8 +1,12 @@
 // DataArt JS 2 - Kolesnikov. E.A.
 //import "./style.css";
 
+const API_URL = "https://api.exchangeratesapi.io";
+const API_FLAG_URL = "https://flagcdn.com";
+
 document.querySelector('head').innerHTML =
   `<link rel="stylesheet" type="text/css" href="style.css">`;
+  
 const daysArray = [];
 let rates = {};
 let base = "RUB";
@@ -13,47 +17,79 @@ const baseArray = ['RUB','USD','EUR'];
 //======================================
 function main() {
   const appRates = document.getElementById('appRates');
-  const div = document.createElement("div");
-  div.setAttribute("id", '#header');
+  const header = document.createElement("div");
+  header.setAttribute("id", '#header');
   const html = baseArray.map(item => addBaseButton(item));
-  div.innerHTML = `<h1>Exchange Rates ` + html.join("") + `</h1>`;
-  appRates.appendChild(div);
+  header.innerHTML = `<h1>Exchange Rates ` + html.join("") + `</h1>`;
+  appRates.appendChild(header);
 
-  let baseButtons = document.querySelectorAll('.baseButton');
-  baseButtons.forEach(item => {
-    item.addEventListener('click', (e) => {
-      let content = e.currentTarget.value;
-      // console.log(`${content}`);
+  header.addEventListener('click', e => {
+    if (e.target.classList == ('baseButton')) {
+      let content = e.target.value;
+      console.log(`${content}`);
       base = content;
       reloadRates();
-    })
+    };
   })
 }
 
 function addBaseButton(country) {
+  let check = country == base ? 'checked' : ''; 
   let flagText = country.toLocaleLowerCase().substring(0, 2);
-  let flagImg = `<img type="image" src="https://flagcdn.com/40x30/${flagText}.png">`;
-  let html = `<input id="${country}" type="radio" name="radio" value="${country}" class="baseButton">
+  let flagImg = `<img type="image" src="${API_FLAG_URL}/40x30/${flagText}.png">`;
+  let html = `<input id="${country}" type="radio" name="radio" 
+              value="${country}" class="baseButton" ${check}>
   <label for="${country}">${flagImg}</label> `;
   return html;
 }
 
-function createButtons () {
-  const div = document.createElement("div");
-  div.setAttribute("id", '#dateButtons');
-  div.classList.add("dateButtons");
-  appRates.appendChild(div);
+function createDateButtons () {
+  const dateButtons = document.createElement("div");
+  // dateButtons.setAttribute("id", '#dateButtons');
+  dateButtons.classList.add("dateButtons");
+  appRates.appendChild(dateButtons);
   const html = daysArray.map(item => `<button class="dateButton">${item}</button>`);
-  div.innerHTML = html.join("");
-  let dateButtons = document.querySelectorAll('.dateButton');
-  dateButtons.forEach(item => {
-    item.addEventListener('click', (e) => {
-      let content = e.currentTarget.innerHTML;
-      // console.log(`${content}`);
+  dateButtons.innerHTML = html.join("");
+  dateButtons.addEventListener('click', e => {
+    // var 1 ==================================;
+    // console.log(e.target.closest("button"));
+    // if (e.target.closest("button")) {
+    //   date = e.target.innerHTML;
+    //   reloadRates();
+    // }
+      
+    // var 2 ==================================;
+    // console.log(e.target.tagName);
+		// if (e.target.tagName !== 'BUTTON') 
+    //   return null; 
+    // date = e.target.innerHTML;
+    // reloadRates();
+
+    // var 3 ==================================;
+    // console.log(e.target.classList.contains('dateButton'));
+    // if (e.target.classList.contains('dateButton')) {
+    //   date = e.target.innerHTML;
+    //   reloadRates();
+    // };
+
+    // var 4 ==================================;
+    if (e.target.classList == ('dateButton')) {
+      let content = e.target.innerHTML;
+      console.log(`${content}`);
       date = content;
       reloadRates();
-    })
+    };
   })
+
+  // let dateButtons = document.querySelectorAll('.dateButton');
+  // dateButtons.forEach(item => {
+  //   item.addEventListener('click', (e) => {
+  //     let content = e.currentTarget.innerHTML;
+  //     // console.log(`${content}`);
+  //     date = content;
+  //     reloadRates();
+  //   })
+  // })
 }
 
 function createRatesTable () {
@@ -67,7 +103,7 @@ function createRatesTable () {
   
   let html = `<tr><th colspan="2">${date}</th>
                   <th>Rate 
-                    <img src="https://flagcdn.com/20x15/${base.toLocaleLowerCase().substring(0, 2)}.png">
+                    <img src="${API_FLAG_URL}/20x15/${base.toLocaleLowerCase().substring(0, 2)}.png">
                   </th>
                   <th>Currency unit in ${base}</th>
               </tr>`;
@@ -75,7 +111,7 @@ function createRatesTable () {
   for (let key in rates) {
     // console.log( "Key: " + key + " Value: " + rates[key]);
     let flagText = key.toLocaleLowerCase().substring(0, 2);
-    let flagImgTag = `<img src="https://flagcdn.com/20x15/${flagText}.png">`
+    let flagImgTag = `<img src="${API_FLAG_URL}/20x15/${flagText}.png">`
     let html = `<tr><td>${flagImgTag}</td>
                     <td>${key}</td>
                     <td>${rates[key]}</td>
@@ -86,7 +122,7 @@ function createRatesTable () {
 } 
 
 const getJsonRates = async (date, base) => {
-  let response = await fetch(`https://api.exchangeratesapi.io/${date}?base=${base}`);
+  let response = await fetch(`${API_URL}/${date}?base=${base}`);
   if (response.ok) {
     let json = await response.json();
     // console.log(json);
@@ -101,20 +137,15 @@ const getJsonRates = async (date, base) => {
 }
 
 function createDatesArray(days) {
+  const zeroFormat = num => ("0" + num).slice(-2);
   for (let i = 0; i < days; i++) {
     // сегодня вон чё на дворе :)
     let now = new Date();
     // вычитаем дни из текущего времени, Марти
     now.setDate(now.getDate() - i);
-
-    let yyyy = now.getFullYear();
-    let mm = now.getMonth() + 1;
-    let dd = now.getDate();
-
-    if (mm < 10) mm = '0' + mm;
-    if (dd < 10) dd = '0' + dd;
-
-    let item = yyyy.toString() +'-'+ mm.toString() +'-'+ dd.toString();
+    let item = now.getFullYear() +'-'
+      + zeroFormat(now.getMonth() + 1) +'-'
+      + zeroFormat(now.getDate());
     daysArray.push(item);
   }
   date = daysArray[0];
@@ -133,5 +164,5 @@ function reloadRates() {
 
 main();
 createDatesArray(days);
-createButtons();
+createDateButtons();
 reloadRates();
