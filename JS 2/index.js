@@ -1,18 +1,22 @@
 // DataArt JS 2 - Kolesnikov. E.A.
 //import "./style.css";
 
-const API_URL = "https://api.exchangeratesapi.io";
+const API_URL = "http://api.exchangeratesapi.io/v1";
 const API_FLAG_URL = "https://flagcdn.com";
+const ACCESS_KEY = '7cc5545a7e5772062be5d6a87609ea62';
 
 document.querySelector('head').innerHTML =
-  `<link rel="stylesheet" type="text/css" href="style.css">`;
-  
+  `<link rel="stylesheet" type="text/css" href="style.css">
+  <meta charset="UTF-8">
+  `;
+
 const daysArray = [];
 let rates = {};
-let base = "RUB";
+let base = "EUR";
 let date = null;
-let days = 7;
+let days = 5;
 const baseArray = ['RUB','USD','EUR'];
+const symbols = ""
 
 //======================================
 function main() {
@@ -92,11 +96,22 @@ function createDateButtons () {
   // })
 }
 
-function createRatesTable () {
+function CreateError(error) {
+  deleteRatesTable();
+  const divError = document.createElement("h3");
+  divError.classList.add("rateTable");
+  appRates.appendChild(divError);
+  divError.innerHTML = `Error HTTP: ${error}`
+}
+function deleteRatesTable () {
   let checkTable = document.querySelector('.rateTable');
   if (checkTable != null || checkTable != undefined) {
     checkTable.remove();
   }
+}
+
+function createRatesTable () {
+  deleteRatesTable();
   const div = document.createElement("table");
   div.classList.add("rateTable");
   appRates.appendChild(div);
@@ -108,7 +123,9 @@ function createRatesTable () {
                   <th>Currency unit in ${base}</th>
               </tr>`;
   div.innerHTML += html;
+  let countRates = 0;
   for (let key in rates) {
+    countRates++;
     // console.log( "Key: " + key + " Value: " + rates[key]);
     let flagText = key.toLocaleLowerCase().substring(0, 2);
     let flagImgTag = `<img src="${API_FLAG_URL}/20x15/${flagText}.png">`
@@ -119,21 +136,24 @@ function createRatesTable () {
                 </tr>`;
     div.innerHTML += html;
   }
+  console.log("count Exchange = ", countRates);
 } 
 
 const getJsonRates = async (date, base) => {
-  let response = await fetch(`${API_URL}/${date}?base=${base}`);
+  let response = await fetch(`${API_URL}/${date}?access_key=${ACCESS_KEY}&base=${base}&symbols=${symbols}`);
   if (response.ok) {
     let json = await response.json();
     // console.log(json);
     base = json.base;
     date = json.date;
     rates = json.rates;
+    createRatesTable();
   } else {
     console.log("Error HTTP: " + response.status);
+    CreateError(response.status);
   }
   // console.log(rates);
-  createRatesTable();
+  console.log('End getJson');
 }
 
 function createDatesArray(days) {
