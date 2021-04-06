@@ -37,24 +37,63 @@ const updateComments = (data, error) => {
     return;
   }
 
+  // hard 
+  // const dataComments = JSON.parse(JSON.stringify(data));
+  // const inputData = document.querySelector('.input__control').value;
+  // const filteredData = dataComments.filter(item => item.email.includes(`${inputData}`));
+  
+  // soft 
   const dataComments = JSON.parse(JSON.stringify(data));
+  const inputData = document.querySelector('.input__control').value.toLowerCase();
+  const filteredData = dataComments
+    .filter(item => item.email.toLowerCase().includes(`${inputData}`));
+  
+  // console.log(inputData);
+  // console.log(filteredData);
+
+
+  // let dat = Object.keys(dataComments).map(key => ({
+  //   id: dataComments[key].id,
+  //   postId: dataComments[key].postId,
+  //   email: dataComments[key].email,
+  //   name: dataComments[key].name,
+  //   body: dataComments[key].body,
+  // }));
+
+  // let datt = dataComments
+  //   .filter(item => item.email.includes('.biz'))
+  //   .map(item => Object.entries(item));
+  // console.log(datt);
+
+  // let filteredData = Object.keys(dataComments)
+  // .map(key => ({
+  //   id: dataComments[key].id,
+  //   postId: dataComments[key].postId,
+  //   email: dataComments[key].email,
+  //   name: dataComments[key].name,
+  //   body: dataComments[key].body,
+  // }))
+  // .filter(item => item.email.includes('.biz'));
+
+  // console.log(Object.keys(filteredData).map(key => filteredData[key].email));
+
   const contentHTML = `
   <h2 class="comments__header">Comments</h2>
     <div class="comments__content">
-      ${Object.keys(dataComments).map(key =>
-      `<div class="comment" style="background-color:${fillBackgroungComment(dataComments[key].postId)}">
+      ${Object.keys(filteredData).map(key => 
+      `<div class="comment" style="background-color:${fillBackgroungComment(filteredData[key].postId)}">
         <div class="comment__info">
-          <div class="comments__postId">${dataComments[key].postId}</div>
-          <div class="comments__email">${dataComments[key].email}</div>
-          <div class="comments__id">${dataComments[key].id}</div>
+          <div class="comments__postId">${filteredData[key].postId}</div>
+          <div class="comments__email">${filteredData[key].email}</div>
+          <div class="comments__id">${filteredData[key].id}</div>
         </div>
-        <div class="comments__name">${dataComments[key].name}</div>
-        <div class="comments__body">${dataComments[key].body}</div>
+        <div class="comments__name">${filteredData[key].name}</div>
+        <div class="comments__body">${filteredData[key].body}</div>
       </div>`
       ).join("")}
     </div>
   `;
-  commentsWrapper.innerHTML += contentHTML;
+  commentsWrapper.innerHTML = contentHTML;
 };
 
 function fillBackgroungComment (postId) {
@@ -92,3 +131,27 @@ const getData = async () => {
   }
 }
 getData();
+
+
+// === input ====================================================
+const inputBox = document.querySelector('.input__control');
+const inputClear = document.querySelector('.input__clear');
+inputBox.addEventListener("input", (e) => (changeInputBox(e)));
+inputClear.addEventListener("click", (e) => (changeInputClear(e)));
+
+function changeInputBox(e) {
+  let value = e.currentTarget.value;
+  // On Off inputClear
+  if (value == "" || undefined) {
+    inputClear.style.display = 'none';
+  } else {
+    inputClear.style.display = 'block';
+  }
+  getData();
+}
+
+function changeInputClear(e) {
+  inputBox.value = "";
+  e.currentTarget.style.display = 'none';
+  getData();
+}
