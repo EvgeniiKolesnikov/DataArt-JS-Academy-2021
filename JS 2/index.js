@@ -15,7 +15,7 @@ let rates = {};
 let base = "EUR";
 let date = null;
 let days = 5;
-const baseArray = ['RUB','USD','EUR'];
+const baseArray = ['RUB', 'USD', 'EUR'];
 const symbols = ""
 
 //======================================
@@ -38,7 +38,7 @@ function main() {
 }
 
 function addBaseButton(country) {
-  let check = country == base ? 'checked' : ''; 
+  let check = country == base ? 'checked' : '';
   let flagText = country.toLocaleLowerCase().substring(0, 2);
   let flagImg = `<img type="image" src="${API_FLAG_URL}/40x30/${flagText}.png">`;
   let html = `<input id="${country}" type="radio" name="radio" 
@@ -47,7 +47,7 @@ function addBaseButton(country) {
   return html;
 }
 
-function createDateButtons () {
+function createDateButtons() {
   const dateButtons = document.createElement("div");
   // dateButtons.setAttribute("id", '#dateButtons');
   dateButtons.classList.add("dateButtons");
@@ -61,10 +61,10 @@ function createDateButtons () {
     //   date = e.target.innerHTML;
     //   reloadRates();
     // }
-      
+
     // var 2 ==================================;
     // console.log(e.target.tagName);
-		// if (e.target.tagName !== 'BUTTON') 
+    // if (e.target.tagName !== 'BUTTON') 
     //   return null; 
     // date = e.target.innerHTML;
     // reloadRates();
@@ -96,26 +96,19 @@ function createDateButtons () {
   // })
 }
 
-function CreateError(error) {
-  deleteRatesTable();
-  const divError = document.createElement("h3");
-  divError.classList.add("rateTable");
-  appRates.appendChild(divError);
-  divError.innerHTML = `Error HTTP: ${error}`
-}
-function deleteRatesTable () {
+function deleteRatesTable() {
   let checkTable = document.querySelector('.rateTable');
   if (checkTable != null || checkTable != undefined) {
     checkTable.remove();
   }
 }
 
-function createRatesTable () {
+function createRatesTable() {
   deleteRatesTable();
   const div = document.createElement("table");
   div.classList.add("rateTable");
   appRates.appendChild(div);
-  
+
   let html = `<tr><th colspan="2">${date}</th>
                   <th>Rate 
                     <img src="${API_FLAG_URL}/20x15/${base.toLocaleLowerCase().substring(0, 2)}.png">
@@ -137,35 +130,60 @@ function createRatesTable () {
     div.innerHTML += html;
   }
   console.log("count Exchange = ", countRates);
-} 
-
-const getJsonRates = async (date, base) => {
-  let response = await fetch(`${API_URL}/${date}?access_key=${ACCESS_KEY}&base=${base}&symbols=${symbols}`);
-  if (response.ok) {
-    let json = await response.json();
-    // console.log(json);
-    base = json.base;
-    date = json.date;
-    rates = json.rates;
-    createRatesTable();
-  } else {
-    console.log("Error HTTP: " + response.status);
-    CreateError(response.status);
-  }
-  // console.log(rates);
-  console.log('End getJson');
 }
 
+function CreateError(error) {
+  deleteRatesTable();
+  const divError = document.createElement("h3");
+  divError.classList.add("rateTable");
+  appRates.appendChild(divError);
+  divError.innerHTML = `Error: ${error}`;
+}
+
+const getJsonRates = async (date, base) => {
+  try {
+    let response = await fetch(
+      `${API_URL}/${date}?access_key=${ACCESS_KEY}&base=${base}&symbols=${symbols}`
+    );
+    if (response.ok) {
+      let json = await response.json();
+      // console.log(json);
+      base = json.base;
+      date = json.date;
+      rates = json.rates;
+      createRatesTable();
+    } else {
+      CreateError(response.statusText + ' ' + response.status);
+      console.error("Error HTTP: " + response.status);
+    }
+  } catch (error) {
+    CreateError(error);
+    console.error(error);
+  }
+}
+
+// function createDatesArray(days) {
+//   const zeroFormat = num => ("0" + num).slice(-2);
+//   for (let i = 0; i < days; i++) {
+//     // сегодня вон чё на дворе :)
+//     let now = new Date();
+//     // вычитаем дни из текущего времени, Марти
+//     now.setDate(now.getDate() - i);
+//     let item = now.getFullYear() + '-' +
+//       zeroFormat(now.getMonth() + 1) + '-' +
+//       zeroFormat(now.getDate());
+//     daysArray.push(item);
+//   }
+//   date = daysArray[0];
+//   console.log('Today = ', date);
+// }
+
 function createDatesArray(days) {
-  const zeroFormat = num => ("0" + num).slice(-2);
   for (let i = 0; i < days; i++) {
-    // сегодня вон чё на дворе :)
     let now = new Date();
-    // вычитаем дни из текущего времени, Марти
     now.setDate(now.getDate() - i);
-    let item = now.getFullYear() +'-'
-      + zeroFormat(now.getMonth() + 1) +'-'
-      + zeroFormat(now.getDate());
+    let item = now.toISOString().substring(0,10);
+    // console.log(item);
     daysArray.push(item);
   }
   date = daysArray[0];
