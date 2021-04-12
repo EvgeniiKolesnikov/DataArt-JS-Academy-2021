@@ -1,0 +1,115 @@
+.features {
+  &__container {
+    margin-top: 381px;
+    @media (max-width: $laptop-1212) {
+      margin-top: 60px;
+    }
+    @media (max-width: $tablet-992) {
+      margin-top: 60px;
+    }
+  }
+  &__items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @media (max-width: $laptop-1212) {
+      justify-content: space-between;
+      align-items: stretch;
+      flex-direction: column;
+      align-content: center;
+    }
+    @media (max-width: $tablet-992) {
+
+    }
+  }
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 0 0 370px;
+    height: 515px;
+    background: #FFFFFF;
+    box-shadow: (0px 4px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 5px;
+    &--blue {
+      box-shadow: 0px 10px 30px rgba(52, 178, 255, 0.16);
+      border-radius: 5px;
+    }
+    &--white {
+      box-shadow: 0px 10px 26px rgba(0, 0, 0, 0.04);
+      border-radius: 5px;
+    }
+    @media (max-width: 1212px) {
+      flex: 0 0 300px;
+      margin: 10px;
+      padding: 10px;
+    }
+  }
+  &__avatar {
+    width: 130px;
+    height: 130px;
+    margin: 60px 0px 35px 0px;
+    border-radius: 50%;
+    box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.08);
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex: 0 0 130px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    &::after {
+      content: "";
+      position: absolute;
+      width: 114px;
+      display: block;
+      height: 114px;
+      background: $lightBlue;
+      border-radius: 50%;
+      margin: 8px;
+      opacity: 0.1;
+      box-shadow: 0px 4px 30px rgb(0 0 0 / 6%);
+    }
+    @media (max-width: $laptop-1212) {
+      margin: 0px 0px 5px 0px;
+    }
+    @media (max-width: $tablet-992) {
+      
+    }
+    &__pic {
+
+    }
+  }
+  
+  &__title {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 125%;
+    text-align: center; 
+    color: $darkBlack;
+  }
+  &__subtitle {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 187%;
+    text-align: center;
+    margin: 30px auto;
+    padding: 0px 37px;
+    color: $lightBlack6;
+    @media (max-width: $laptop-1212) {
+      margin: 5px auto;
+      padding: 0px 5px;
+    }
+    @media (max-width: $tablet-992) {
+      
+    }
+  }
+  &__button {
+    border: 2px solid $hover;
+    background-color: $white;
+  }
+}           

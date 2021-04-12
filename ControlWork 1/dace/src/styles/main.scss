@@ -1,0 +1,17 @@
+// parcel -V 	1.12.3
+// node -v 	v13.14.0
+
+@import "reset";
+@import "fonts";
+@import "variables";
+
+@import "./components/logo";
+@import "./components/scrollbar";
+@import "./components/header";
+@import "./components/buttons";
+@import "./components/burger";
+@import "./components/review";
+@import "./components/features";
+@import "./components/aboutus";
+@import "./components/subscribe";
+@import "./components/footer";

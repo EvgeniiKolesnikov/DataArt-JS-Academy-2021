@@ -1,0 +1,41 @@
+.review {
+  &__title {
+    margin-top: 165px;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 56px;
+    color: #FFFFFF;
+    @media (max-width: $tablet-768) {
+      margin-top: 135px;
+      font-size: 46px;
+    }
+    @media (max-width: $mobile-500) {
+      margin-top: 145px;
+      font-size: 30px;
+    }
+    @media (max-width: $mobile-480) {
+      margin-top: 25px;
+      font-size: 25px;
+    }
+  }
+  &__text {
+
+    margin: 40px 0px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 30px;
+    color: #E1E1E1;
+  }
+  &__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    @media (max-width: $mobile-480) {
+      align-items: center;
+      justify-content: space-around;
+    }
+  }
+}

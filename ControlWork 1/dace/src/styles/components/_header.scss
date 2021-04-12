@@ -1,0 +1,112 @@
+.header {
+  position: relative;
+  &__content {
+    padding-top: 40px;
+  }
+  &__menu {
+    height: 52px;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    @media (max-width: $tablet-768) {
+      flex-direction: column;
+    }
+    @media (max-width: $mobile-480) {
+      flex-direction: column;
+      height: 115px;
+    }
+  }
+  &__title {
+    width: 567px;
+    height: 198px;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 56px;
+    line-height: 66px;
+    margin-top: 10px;
+    color: #FFFFFF;
+  }
+}
+.background {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 939.32px;
+  left: 0px;
+  top: 0px;
+  overflow: hidden;
+  background-color: $darkBlue;
+  border-radius: 0 0 241% 18%/39%;
+
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 30px 100%);
+  background-repeat: no-repeat;
+  background-image: url(../svg/lines.svg);
+  background-size: 444px;
+  background-position: 0% 99%;
+  background-blend-mode: soft-light;
+  @media (max-width: $laptop-1212) {
+    border-radius: 0 0 0 0;
+    clip-path: polygon(0 0, 100% 0, 100% 89%, 0 100%);
+    background-size: 43%;
+    background-position: -9% 101%;
+  }
+  @media (max-width: $tablet-768) {
+    height: 800px;
+    border-radius: 0 0 0 0;
+    clip-path: polygon(0 0, 100% 0, 100% 89%, 0 100%);
+    background-size: 43%;
+    background-position: -9% 101%;
+  }
+
+  &__line {
+    position: absolute;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    height: 940px;
+    width: 1px;
+    &--1 {
+      left: 19.53125%;
+    }
+    &--2 {
+      left: 39.84375%;
+    }
+    &--3 {
+      right: 39.84375%;
+    }
+    &--4 {
+      right: 19.53125%;
+    }
+  }
+}
+
+.menu {
+  &__body {
+    padding: 0 10px;
+    @media (max-width: $tablet-768) {
+      padding: 30px 10px;
+    }
+    @media (max-width: $mobile-480) {
+      display: none;
+    }
+  }
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 493px;
+    height: 30px;
+    @media (max-width: $laptop-1024) {
+      width: 380px;
+    }
+  }
+  &__link {
+    text-decoration: none;
+    -webkit-user-select: none;
+    color: $white;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 30px;
+  }
+}

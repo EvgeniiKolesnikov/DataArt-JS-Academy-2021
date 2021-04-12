@@ -1,0 +1,58 @@
+
+// Colors
+$primary: #34B2FF;
+$secondary: #074ECE;
+$white: #fff;
+$darkBlack: #171614;
+$lightBlack4:#444444;
+$lightBlack6: #666666;
+$lightBlack7: #777777;
+
+$darkBlue: #074ECE;
+$lightBlue:#34B2FF;
+$middleBlue: #5283dd;
+
+$hover:#18a0fb;
+$hoverWhite:#c7eaff;
+$press:#0193f5;
+
+// variables
+$minWidth:320px;
+$maxWidth:1920;
+$maxWidthContainer:1200;
+
+// Breakpoints
+$laptop-1212: 1212px;
+$laptop-1024: 1024px;
+$tablet-992: 992px;
+$tablet-768: 768px;
+$mobile-500: 500px;
+$mobile-480: 480px;
+$breakpoint-mobile: 480px;
+
+@media (max-width: $laptop-1212) {
+  
+}
+@media (max-width: $laptop-1024) {
+  
+}
+@media (max-width: $tablet-992) {
+  
+}
+@media (max-width: $tablet-768) {
+  
+}
+@media (max-width: $mobile-500) {
+  
+}
+@media (max-width: $mobile-480) {
+  
+}
+
+// container
+._container {
+  max-width: $maxWidthContainer + px;
+  padding: 0px 15px;
+  margin: 0 auto;   
+}
+

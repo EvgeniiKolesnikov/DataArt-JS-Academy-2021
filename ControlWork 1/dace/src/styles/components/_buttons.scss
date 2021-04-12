@@ -1,0 +1,109 @@
+.button {
+  width: 148px;
+  height: 52px;
+  background-color: $lightBlue;
+  border-radius: 28px;
+  
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 187%;
+  text-align: center;
+  color: $white;
+  -webkit-user-select: none;
+  &:hover {
+    background-color: $hover;
+  }
+  &:active {
+    background-color: $press;
+  }
+
+  &__menu {
+    width: 148px;
+    flex:0 0 148px;
+    @media (max-width: $tablet-768) {
+      flex:0 0 52px;
+    }
+  }
+
+  &__review {
+    width: 187px;
+    height: 61px;
+    font-weight: 500;
+    min-width: 61px;
+  }
+
+  &__play {
+    width: 61px;
+    height: 61px;
+    background-color: $white;
+    margin: 0 16px 0 25px;
+    background-repeat: no-repeat;
+    background-image: url(/src/svg/button_play.svg);
+    background-position: center;
+    background-position-x: 25px;
+    flex: 0 0 61px;
+    &:hover {
+      background-position-y: 19px;
+      background-position-x: 22px;
+      border: 3px solid $lightBlue;
+      background-color: $white;
+    }
+    &:active {
+      background-position-y: 19px;
+      background-position-x: 22px;
+      border: 3px solid $lightBlue;
+      background-color: $hoverWhite;
+    }
+  }
+  &__subtitle {
+    width: 91px;
+    height: 30px;
+    left: 661px;
+    top: 611px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 30 / 16 *100%;
+    color: $white;
+    @media (max-width: $mobile-480) {
+      display: none;
+    }
+  }
+  &__features {
+    width: 163px;
+    height: 50px;
+    border-radius: 25px;
+    font-weight: 500;
+    &--white {
+      background-color: $white;
+      color: $lightBlue;
+      border: 2px solid $hover;
+      &:hover, &:active {
+        border: 3px solid $hover;
+        background-color: $white;
+      }
+      &:active {
+        border: 3px solid $hover;
+        background-color: $hoverWhite;
+      }
+    }
+  }
+  &__aboutus {
+    width: 182px;
+    height: 52px;
+    font-weight: 500;
+  }
+  &__footer {
+    width: 82px;
+    height: 42px;
+  } 
+}
