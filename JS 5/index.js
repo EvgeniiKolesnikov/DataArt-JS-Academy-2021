@@ -6,11 +6,11 @@ const links = document.querySelector('#links-box');
 const inputText = document.querySelector('#input-box__text');
 const inputAdd = document.querySelector('#input-box__add');
 
-links.addEventListener("mousedown", (e) => (mousedownLinks(e)));
-inputText.addEventListener("keydown", (e) => { if (e.code == 'Enter') addLink(e)});
-inputAdd.addEventListener("click", (e) => (addLink(e)));
+links.addEventListener("mousedown", (e) => mousedownLinks(e));
+inputText.addEventListener("keydown", (e) => { if (e.code == 'Enter') addLink()});
+inputAdd.addEventListener("click", (e) => addLink());
 
-function addLink(e) {
+function addLink() {
   let link = inputText.value;
   let firstDot = link.indexOf('.');
   let lastDot = link.lastIndexOf('.');
