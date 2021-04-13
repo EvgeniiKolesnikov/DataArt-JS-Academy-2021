@@ -19,14 +19,14 @@ function addLink() {
     console.log('correct link');
     links.innerHTML += `<div id="link" class="btn-group btn-group-justified text-muted pb-1 w-100">
       <button id="link__button" type="button" 
-      onclick="window.open('https://www.${link}')"
-      value="Go to ${link}"
-      class="btn btn-outline-warning btn-sm btn-block col-11">
-        <a id="link__link" href="https://www.${link}" class="card-link" target="_blank">${link}</a></button>
+        onclick="window.open('https://www.${link}','_blank')"
+        value="Go to ${link}"
+        class="btn btn-outline-warning btn-sm btn-block col-11">
+          <a id="link__link" class="card-link" href="https://www.${link}" target="_blank">${link}</a>
+      </button>
       <button id="link__delete"class="btn btn-outline-danger btn-sm" type="button">Delete</button>
     </div>`
     // inputText.value = "";
-    // e.currentTarget.style.display = 'none';
   } else {
     console.log('Incorrect link');
   }
@@ -34,9 +34,9 @@ function addLink() {
 
 function mousedownLinks(e) {
   // console.log(e.currentTarget); // #links-box
-  console.log(e.target);
+  // console.log(e.target);
   if (e.target.id == 'link__delete') {
-    console.log('delete');
+    // console.log('delete');
     e.target.parentElement.remove();
   }
 }
