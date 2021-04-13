@@ -1,19 +1,18 @@
-console.log('Hi, man. It.s tracing script');
+console.log("Hi, man. It.s tracing script");
 
 const trackList = [];
-const trackTagsArray = ['BUTTON'];
-const ignoreIds = [];
+const trackTagsArray = ["BUTTON"];
 let trackBox;
 let loadDataBtn;
 let clearDataBtn;
-let globalDom;
-document.addEventListener('click', (e) => trackElement(e));
+let wayGlobal;
+document.addEventListener("click", e => trackElement(e));
 
-function addTrackList() { 
-  trackBox = document.createElement('div');
+function addTrackList() {
+  trackBox = document.createElement("div");
   trackBox.classList.add("trackBox");
   trackBox.id = "trackBox";
-  const body = document.getElementsByTagName('body')[0];
+  const body = document.getElementsByTagName("body")[0];
   // console.log(body);
   body.appendChild(trackBox);
   trackBox.innerHTML = `
@@ -35,39 +34,41 @@ function addTrackList() {
       </tbody>
     </table>
   </div>`;
-  addEvents(); 
+  addEvents();
 }
 addTrackList();
 
 function addEvents() {
-  loadDataBtn = document.querySelector('#loadData');
-  loadDataBtn.addEventListener('click', e => loadData(e));
-  clearDataBtn = document.querySelector('#clearData');
-  clearDataBtn.addEventListener('click', e => clearData(e));
+  loadDataBtn = document.querySelector("#loadData");
+  loadDataBtn.addEventListener("click", e => loadData(e));
+  clearDataBtn = document.querySelector("#clearData");
+  clearDataBtn.addEventListener("click", e => clearData(e));
 }
 
 function loadData() {
-  console.log('load data');
-  let trackBox__list = document.querySelector('#trackBox__list');
+  console.log("load data");
+  let trackBox__list = document.querySelector("#trackBox__list");
   trackBox__list.innerHTML = `
-    ${Object.keys(trackList).map(item => 
-      `<tr>
+    ${Object.keys(trackList)
+      .map(
+        item =>
+          `<tr>
         <td>${trackList[item].tag}</td>
         <td>${trackList[item].id}</td>
         <td>${trackList[item].text}</td>
         <td>${trackList[item].time}</td>
-        <td>${trackList[item].wayDOM}</td>
-      </tr>` 
-    ).join("")}
-  `
+        <td>${trackList[item].way}</td>
+      </tr>`
+      )
+      .join("")}
+  `;
 }
 
 function clearData() {
-  console.log('clear data');
-  let trackBox__list = document.querySelector('#trackBox__list');
+  console.log("clear data");
+  let trackBox__list = document.querySelector("#trackBox__list");
   trackList.length = 0;
   loadData();
-
 }
 
 function trackElement(e) {
@@ -76,34 +77,34 @@ function trackElement(e) {
   // console.log('data-ignore = ', item.dataset.ignore);
   if (trackTagsArray.indexOf(item.tagName) != -1 && !item.dataset.ignore) {
     // console.log('Мы мониторим клики на этот элемент - ' + item.tagName);
-    let wayDom = item.id;
-    findWay(item, wayDom);
-    console.log(globalDom);
+    let wayLocal = item.id;
+    findWay(item, wayLocal);
+    // console.log(wayGlobal);
     trackList.push({
       tag: item.tagName,
       id: item.id,
       time: Date(),
       text: item.textContent,
-      wayDOM: globalDom
+      way: wayGlobal
     });
   }
 }
 
-function findWay(item, wayDom) {
+function findWay(item, wayLocal) {
   let way = item.parentNode;
-  wayDom += ` => ${way.tagName}`;
-  // console.log('way = ', way.tagName, 'wayDom = ', wayDom);
-  if (way.tagName=="HTML") {
-    console.log('HTML finded');
-    console.log(wayDom);
-    globalDom = wayDom;
+  wayLocal += ` => ${way.tagName}`;
+  // console.log('way = ', way.tagName, 'wayLocal = ', wayLocal);
+  if (way.tagName == "HTML") {
+    // console.log("HTML finded");
+    // console.log(wayLocal);
+    wayGlobal = wayLocal;
     return;
   }
-  findWay(way, wayDom);
+  findWay(way, wayLocal);
 }
 
 // Add more tags to track
 function addTagToTrack(...tag) {
   trackTagsArray.push(...tag);
 }
-addTagToTrack('IMG','INPUT','A');
+addTagToTrack("IMG", "INPUT", "A");
