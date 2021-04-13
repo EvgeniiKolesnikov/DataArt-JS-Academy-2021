@@ -6,38 +6,9 @@ const links = document.querySelector('#links-box');
 const inputText = document.querySelector('#input-box__text');
 const inputAdd = document.querySelector('#input-box__add');
 
-// inputText.addEventListener("keydown", (e) => (keydownInputText(e)));
-// inputText.addEventListener("mousedown", (e) => (mousedownInputText(e)));
-inputAdd.addEventListener("click", (e) => (addLink(e)));
-
 links.addEventListener("mousedown", (e) => (mousedownLinks(e)));
-// function keydownInputText(e) {
-//   console.log(e);
-//   if (e.code == 'Enter') {
-//     console.log('press Enter');
-//   }
-//   inputAdd.style.display = (e.currentTarget.value == "" || undefined) ? 'none' : 'block';
-//   getData();
-//   https://www
-// }
-
-// function mousedownInputText(e) {
-//   console.log(inputText.value);
-//   console.log(e.target.value);
-//   if (e.target.value === '') {
-//     console.log(e.target.value);
-//     // e.target.value = 'https://www.';
-//   }
-// }
-
-function mousedownLinks(e) {
-  // console.log(e.currentTarget); // #links-box
-  console.log(e.target);
-  if (e.target.id == 'link__delete') {
-    console.log('delete');
-    e.target.parentElement.remove();
-  }
-}
+inputText.addEventListener("keydown", (e) => { if (e.code == 'Enter') addLink(e)});
+inputAdd.addEventListener("click", (e) => (addLink(e)));
 
 function addLink(e) {
   let link = inputText.value;
@@ -60,5 +31,16 @@ function addLink(e) {
     console.log('Incorrect link');
   }
 }
+
+function mousedownLinks(e) {
+  // console.log(e.currentTarget); // #links-box
+  console.log(e.target);
+  if (e.target.id == 'link__delete') {
+    console.log('delete');
+    e.target.parentElement.remove();
+  }
+}
+
+
 
 
