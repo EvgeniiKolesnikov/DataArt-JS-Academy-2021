@@ -1,0 +1,32 @@
+*, *:before, *:after {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", "Lato", sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: #fafafa;
+}
+
+li {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+}
+label {
+  display: none;
+}
+button {
+  cursor: pointer;
+}
+button:active, button:focus {
+  outline: none;
+}
+button::-moz-focus-inner {
+  border: 0;
+}

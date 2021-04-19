@@ -21,6 +21,7 @@ export class BooksUI {
 
       api.search(querry).then(page => {
         this.processSearchResult(page);
+        console.log(page);
       });
     });
 
@@ -61,7 +62,7 @@ export class BooksUI {
       return (
         acc +
         `
-          <div id="${item.id}" class="book-info">${item.title}</div>
+          <div id="${item.id}" class="book-info">${item.title} ${item.author_name}</div>
         `
       );
     }, "");

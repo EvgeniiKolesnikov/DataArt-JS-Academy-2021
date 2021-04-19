@@ -1,0 +1,77 @@
+.app-holder {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.left-block {
+  flex: 0 0 270px;
+  padding: 10px 15px;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 5px rgb(0 0 0 / 20%);
+  border-radius: 2px;
+}
+.center-block {
+  flex: 1 1 100vw;
+  padding: 10px 15px;
+  margin: 0 auto;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 5px rgb(0 0 0 / 20%);
+  border-radius: 2px;
+}
+.right-block {
+  flex: 0 0 270px;
+  padding: 10px 15px;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 5px rgb(0 0 0 / 20%);
+  border-radius: 2px;
+}
+
+.select-book {
+  background-color: #cccccc;
+}
+
+.search__scroll {
+    margin: 0px 0px 0px 0px;
+    overflow-y: auto;
+    height: 200px;
+    &::-webkit-scrollbar-track {
+      border-radius: 10px;
+      background-color: rgb(255, 255, 255);
+    }
+    &::-webkit-scrollbar {
+      width: 8px;
+      height: 6px;
+      background-color: rgb(228, 228, 228);
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background-color: rgb(216, 216, 216);
+      border-right: #000;
+      border: 10px;
+      border-spacing: 1cm;
+      
+    }
+} 
+.search__wrapper {
+  padding: 0px 0px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 5px;
+}
+
+.search__wrapper a {
+    display: block;
+    border-radius: 8px;
+    width: 32%;
+    text-decoration: none;
+}

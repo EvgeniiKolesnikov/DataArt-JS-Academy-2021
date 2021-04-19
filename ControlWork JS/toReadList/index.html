@@ -1,20 +1,45 @@
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <script src="./js/index.js" type="module"></script>
-    <link rel="stylesheet" type="text/css" href="./styles.css" />
-  </head>
-  <body>
-    <div class="app-holder">
-      <div class="left-block">
-        <div>
-          <input id="searchInput" class="search-input" />
-          <button id="goButton">Go!</button>
+
+<head>
+  <meta charset="UTF-8" />
+  <script src="./src/js/index.js" type="module"></script>
+  <link rel="stylesheet" type="text/css" href="./src/css/main.scss" />
+  <link rel="shortcut icon" href="/src/img/book.png" type="image/x-icon">
+</head>
+
+<body>
+  <div class="wrapper">
+    <!-- header -->
+    <header class="header">
+      <h1 class="header__title">Books</h1>
+    </header>
+    <!-- main -->
+    <main class="page">
+      <section class="app-holder">
+        <div class="left-block">
+          <div class="input">
+            <div class="input__box">
+              <div class="input__icon"></div>
+              <input class="input__control" id="searchInput" placeholder="Search books" type="search" name="search"
+                title="Поиск книг">
+              <div class="input__clear" unselectable="on" title="Очистить"></div>
+            </div>
+            <button class="input__button" id="goButton">Go!</button>
+          </div>
+          <div class="search__scroll">
+            <div class="search__wrapper">
+              <div class="search__result" id="searchResultHolder">
+              </div>
+            </div>
+          </div>
         </div>
-        <div id="searchResultHolder"></div>
-      </div>
-      <div class="center-block" id="bookInfoHolder"></div>
-      <!--<div class="right-block">ToRead List...</div>-->
-    </div>
-  </body>
+        <div class="center-block" id="bookInfoHolder"></div>
+        <div class="right-block" id="bookmarks">To read list...</div>
+      </section>
+    </main>
+    <!-- footer -->
+    <footer class="footer"></footer>
+  </div>
+</body>
+
 </html>
