@@ -1,46 +1,46 @@
-.app-holder {
+.app {
   position: relative;
   width: 100%;
+  height: calc(100vh - 70px);
   max-width: 1100px;
+  padding: 0 20px;
   margin: 0 auto;
   display: flex;
   flex-direction: row;
   align-content: space-between;
   align-items: flex-start;
+  align-items: stretch;
   gap: 15px;
 }
 
 .left-block {
   flex: 0 0 270px;
   padding: 10px 15px;
-  background: #FFFFFF;
+  background: $white;
   box-shadow: 0px 0px 5px rgb(0 0 0 / 20%);
   border-radius: 2px;
 }
 .center-block {
-  flex: 1 1 100vw;
+  flex: 0 1 100%;
   padding: 10px 15px;
   margin: 0 auto;
-  background: #FFFFFF;
+  background: $white;
   box-shadow: 0px 0px 5px rgb(0 0 0 / 20%);
   border-radius: 2px;
 }
 .right-block {
   flex: 0 0 270px;
   padding: 10px 15px;
-  background: #FFFFFF;
+  background: $white;
   box-shadow: 0px 0px 5px rgb(0 0 0 / 20%);
   border-radius: 2px;
-}
-
-.select-book {
-  background-color: #cccccc;
 }
 
 .search__scroll {
     margin: 0px 0px 0px 0px;
     overflow-y: auto;
-    height: 200px;
+    position: relative;
+    height: calc(100% - 55px);
     &::-webkit-scrollbar-track {
       border-radius: 10px;
       background-color: rgb(255, 255, 255);
@@ -60,18 +60,28 @@
       border-spacing: 1cm;
       
     }
-} 
-.search__wrapper {
+}
+
+.search__result {
   padding: 0px 0px 0px 0px;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  gap: 5px;
-}
-
-.search__wrapper a {
+  a {
     display: block;
     border-radius: 8px;
     width: 32%;
     text-decoration: none;
+  }
+}
+
+.book-info {
+  cursor: pointer;
+    // border-bottom: 1px solid #e8e7e7;
+    padding: 4px 5px 4px 5px;
+    margin: 0px 10px 0px 0px;
+}
+.select-book {
+  background-color: #cccccc;
+  border-radius: 4px;
 }

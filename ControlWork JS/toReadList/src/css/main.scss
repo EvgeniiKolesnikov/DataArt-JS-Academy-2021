@@ -1,6 +1,9 @@
-@import url(./fonts.scss);
-@import url(./reset.scss);
-@import url(./header.scss);
-@import url(./page.scss);
-@import url(./books-ui.scss);
-@import url(./input.scss); 
+@import "./fonts.scss";
+@import "./variables.scss";
+@import "./reset.scss";
+
+
+@import "./components/header.scss";
+@import "./components/books-ui.scss";
+@import "./components/input.scss"; 
+@import "./components/spinner.scss";
