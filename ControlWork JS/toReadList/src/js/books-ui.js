@@ -25,29 +25,31 @@ export class BooksUI {
       });
     });
 
-    this.searchResultHolder.addEventListener("click", event => {
-      const targetDiv = event.target;
+    this.searchResultHolder.addEventListener("click", e => {
+      this.bookInfoHolder.innerHTML = ``;
+      const targetDiv = e.target;
       const id = targetDiv.id;
-
-      const selectedBook = this.currentPage.find(item => item.id === id);
-      if (!selectedBook) {
+      const selectBook = this.currentPage.find(item => item.id === id);
+      // console.log(`selectBook = ${selectBook}`);
+      if (!selectBook) {
         return;
       }
-
-      if (this.selectedBook) {
-        const selectedBook = this.searchResultHolder.querySelector(
-          "#" + this.selectedBook.id
-        );
-        selectedBook.classList.remove("select-book");
+      if (this.LastSelect) {
+        const LastSelect = this.searchResultHolder
+          .querySelector("#"+this.LastSelect.id);
+        if (LastSelect) {
+          LastSelect.classList.remove("select-book");
+        }
       }
-
-      this.selectedBook = selectedBook;
+      this.LastSelect = selectBook;
       targetDiv.classList.add("select-book");
-
-      this.bookInfoHolder.innerHTML = `
-        <h2>${selectedBook.title}</h2>
-        <div>Languages available: ${selectedBook.language.join(", ")}</div>
-      `;
+      this.bookInfoHolder.innerHTML = `<h2>${selectBook.title}</h2>`;
+      if (selectBook.language) {
+        // console.log(selectBook.language);
+        this.bookInfoHolder.innerHTML += `
+          <div>Languages available: ${selectBook.language.join(", ")}</div>
+        `;
+      }
     });
   }
 
@@ -57,8 +59,7 @@ export class BooksUI {
     });
 
     this.currentPage = page.docs;
-
-    const booksHTML = page.docs.reduce((acc, item) => {
+    const booksHTML = this.currentPage.reduce((acc, item) => {
       return (
         acc +
         `
