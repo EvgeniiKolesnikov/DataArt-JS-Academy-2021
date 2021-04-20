@@ -23,7 +23,8 @@
     <!-- main -->
     <main class="page">
       <section class="app">
-        <div class="left-block">
+
+        <div class="search left-block">
           <div class="input">
             <div class="input__box">
               <div class="input__icon"></div>
@@ -31,24 +32,34 @@
                 title="Поиск книг">
               <div class="input__clear" unselectable="on" title="Очистить"></div>
             </div>
-            <button class="input__button" id="goButton">Go!</button>
+            <button class="input__button" id="searchButton">Go!</button>
           </div>
-          <div class="search__scroll">
-
-            <div class="spinner">
+          <div class="scroll">
+            <div class="spinner" id="spinner">
               <div class="blob top"></div>
               <div class="blob bottom"></div>
               <div class="blob left"></div>
               <div class="blob move-blob"></div>
             </div>
-
-            <div class="search__result" id="searchResultHolder">
-            </div>
-
+            <div class="search__result" id="searchResult"></div>
+          </div>
+          <div class="search__info">
+              <div class="search__found" id="searchFound">Found books: 168</div>
           </div>
         </div>
-        <div class="center-block" id="bookInfoHolder"></div>
-        <div class="right-block" id="bookmarks">To read list...</div>
+
+        <div class="book center-block">
+          <div class="scroll">
+            <div class="book__info" id="bookInfo"></div>
+          </div>
+        </div>
+
+        <div class="bookmarks right-block">
+          <div class="scroll">
+            <div class="bookmarks__info" id="bookmarks">To read list...</div>
+          </div>
+        </div>
+
       </section>
     </main>
     <!-- footer -->
