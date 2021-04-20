@@ -43,16 +43,36 @@ export class BooksUI {
       }
       this.LastSelect = selectBook;
       targetDiv.classList.add("select-book");
-      this.bookInfoHolder.innerHTML = `<h2>${selectBook.title}</h2>`;
-      if (selectBook.language) {
-        // console.log(selectBook.language);
-        this.bookInfoHolder.innerHTML += `
-          <div>Languages available: ${selectBook.language.join(", ")}</div>
-        `;
-      }
+      this.bookInfoHolder.innerHTML = ``;
+      this.addBookInfoHTML(
+        'h3', 'book__title','', selectBook.title);
+      this.addBookInfoHTML(
+        'h6', 'book__subtitle','', selectBook.subtitle);
+      this.addBookInfoHTML(
+        'div', 'book__lang','Languages available: ', selectBook.language);
+      this.addBookInfoHTML(
+        'div', 'book__fulltext','Full text available: ', selectBook.has_fulltext);
+      this.addBookInfoHTML(
+        'div', 'book__publish-first','First publish year: ', selectBook.first_publish_year);
+      this.addBookInfoHTML(
+        'div', 'book__publish-years','Years published: ', selectBook.publish_year);
     });
   }
 
+  addBookInfoHTML(tag, cl, text, prop) {
+    if (`${typeof(prop)}` == 'undefined') {
+      return;
+    }
+    if (`${typeof(prop)}` == 'object') {
+      this.bookInfoHolder.innerHTML +=
+        `<${tag} class="${cl}">${text}${prop.join(", ")}</${tag}>`;
+    } else {
+      this.bookInfoHolder.innerHTML +=
+        `<${tag} class="${cl}">${text}${prop}</${tag}>`;
+    }
+    console.log(`typeof(prop) = ${typeof(prop)}`);
+    console.log(`prop.length = ${prop.length}`);
+  }
   processSearchResult(page) {
     page.docs.forEach(item => {
       item.id = item.key.split("/").pop();
