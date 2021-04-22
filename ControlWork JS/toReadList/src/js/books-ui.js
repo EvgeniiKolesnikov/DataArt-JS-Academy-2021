@@ -62,11 +62,34 @@ export class BooksUI {
       item.id = item.key.split("/").pop();
     });
     this.currentPage = page.docs;
+    // const booksHTML = this.currentPage.reduce((acc, item) => {
+    //   return (acc +
+    //     `<div id="${item.id}" class="book-info">${item.title} (${item.language ? item.language.join(", ") : `language`})</div>`
+    //   );
+    // }, "");
+
+    // const booksHTML = this.currentPage.reduce((acc, item) => {
+    //   return (acc +
+    //     `<div id="${item.id}" class="book-info">
+    //       <div class="book-info__title">${item.title}</div> 
+    //       ${item.language ? `<div class="book-info__lang">${item.language.join(", ")}</div>` : ``}
+    //     </div>`
+    //   );
+    // }, "");
+
     const booksHTML = this.currentPage.reduce((acc, item) => {
       return (acc +
-        `<div id="${item.id}" class="book-info">${item.title} (${item.language ? item.language.join(", ") : `language`})</div>`
+        `<div id="${item.id}" class="book-info">
+          <div class="book-info__title">${item.title} 
+          ${item.language ? `<span class="book-info__lang">${item.language.join(", ")}</span>` : ``}
+          </div> 
+          ${item.subtitle ? `<div class="book-info__subtitle">${item.subtitle}</div>` : ``}
+        </div>`
       );
     }, "");
+
     this.searchResult.innerHTML = booksHTML;
   }
 }
+
+{/* <div class="book-info__subtitle">${item.subtitle}</div>  */}
