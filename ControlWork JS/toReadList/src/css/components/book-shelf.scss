@@ -1,14 +1,16 @@
 .book-shelf {
   position: relative;
   width: 100%;
-  height: calc(100vh - 70px);
+  max-width: 1280px;
+  margin: 0 auto;
+  // height: calc(100vh - 70px);
   padding: 0 20px;
   margin: 0 auto;
   display: flex;
   flex-direction: row;
   align-content: space-between;
   align-items: flex-start;
-  align-items: stretch;
+  // align-items: stretch;
   gap: 15px;
 }
 
@@ -19,6 +21,22 @@
   background: $white;
   box-shadow: 0px 0px 5px rgb(0 0 0 / 20%);
   border-radius: 2px;
+  // new
+  position: fixed;
+  width: 230px;
+  height: calc(100% - 50px);
+  // &::before {
+  //   content: "";
+  //   position: absolute;
+  //   top: 51px;
+  //   left: 0px;
+  //   height: 100px;
+  //   width: 94%;
+  //   z-index: 1;
+  //   pointer-events: none;
+  //   background: linear-gradient(to top, rgb(255 255 255 / 0%) 70%, 
+  //   rgb(255 255 255 / 100%) 90%);
+  // }
 }
 .center-block {
   flex: 0 1 100%;
@@ -27,11 +45,18 @@
   background: $white;
   box-shadow: 0px 0px 5px rgb(0 0 0 / 20%);
   border-radius: 2px;
+  // new
+  min-height: calc(100vh - 50px);
+  margin: 0 0 10px 245px;
 }
 .right-block {
   flex: 0 0 270px;
-  padding: 10px 15px;
+  // padding: 10px 15px;
   background: $white;
   box-shadow: 0px 0px 5px rgb(0 0 0 / 20%);
   border-radius: 2px;
+  min-height: 100px;
+  max-height: calc(100vh - 50px);
+  position: sticky;
+  top: 40px;
 }

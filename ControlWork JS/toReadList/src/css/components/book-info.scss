@@ -2,13 +2,28 @@
   &__header {
     display: flex;
     /* height: 51px; */
+    position: sticky;
+    top: 40px;
+    // background-color: rgba(255, 255, 255, 0.7);
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     padding: 7px 0px 7px 0px;
-    margin: 0px 10px 0px 10px;
-    border-bottom: 1px solid gainsboro;
+    /* margin: 0px 10px 10px 10px; */
+    // border-bottom: 1px solid gainsboro;
+    &::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100px;
+    width: 100%;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(to top, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 1) 80%);
+    background: linear-gradient(to top, rgba(255, 255, 255, 0) 50%, white 70%);
+  }
   }
   &__title {
     padding: 0px 0px 0px 0px;
@@ -30,6 +45,8 @@
   &__props {
     padding: 0px 0px 0px 0px;
     margin: 0px 10px 0px 20px;
+    display: flex;
+    flex-direction: column;
     @media (max-width: 960px) {
       margin: 0px 5px 0px 10px;
     }
@@ -66,8 +83,12 @@
   }
 }
 
-.book-info__picture {
-  
+.book-info__img {
+  margin: 0px auto;
+  text-align: center;
+  max-height: 200px;
+  min-height: 0px;
+  width: auto;
 }
 
 

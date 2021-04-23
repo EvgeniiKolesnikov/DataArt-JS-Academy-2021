@@ -21,7 +21,7 @@ export class BookInfo {
       this.bookInfoHeader.innerHTML += `<h6 class="book-info__subtitle">${book.subtitle}</h6>` 
     }
     if (book.isbn) {
-      this.bookInfo.innerHTML += `<img class="book-info__img" id="bookPicture" src=""></img>`; 
+      this.bookInfo.innerHTML += `<img class="book-info__img" id="bookPicture"></img>`; 
       this.loadBookImage(book.isbn)
     }
 
@@ -51,14 +51,9 @@ export class BookInfo {
         let content = await response.blob();
         let objectURL = URL.createObjectURL(content);
         let bookPicture = document.getElementById('bookPicture');
-        // console.log(bookPicture.src);
-        bookPicture.src = objectURL;
-        // if (bookPicture.childNodes.length === 0) {
-        //   bookPicture.innerHTML += `<img class="book-info__img" src="${objectURL}"></img>`; 
-        // }
-        // if (bookPicture.childNodes.length === 0) {
-        //   bookPicture.innerHTML += `<img class="book-info__img" src="${objectURL}"></img>`; 
-        // }
+        if (bookPicture.src === '') {
+          bookPicture.src = objectURL;
+        }
       } else {
         console.error(`HTTP status: error ${response.status}`);
       }
