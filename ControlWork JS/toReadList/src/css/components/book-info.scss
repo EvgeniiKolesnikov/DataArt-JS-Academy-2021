@@ -29,35 +29,39 @@
 .book-info {
   &__props {
     padding: 0px 0px 0px 0px;
-    margin: 0px 20px 0px 20px;
+    margin: 0px 10px 0px 20px;
+    @media (max-width: 960px) {
+      margin: 0px 5px 0px 10px;
+    }
   }
   &__prop {
     padding: 0px 0px 0px 0px;
     margin: 6px 0px 0px 0px;
+    font-size: 14px;
     display: flex;
-    /* justify-content: flex-start; */
-    /* align-content: baseline; */
-    /* align-items: flex-start; */
-    /* gap: 10px; */
+    justify-content: flex-start;
+    align-content: baseline;
+    align-content: baseline;
+    align-items: baseline;
+    @media (max-width: 960px) {
+      display: block;
+      font-size: 13px;
+    }
   }
   &__prop-title {
-    padding: 0px 0px 0px 0px;
-    /* margin: 0px 0px 0px 10px; */
-    /* width: 27%; */
-    /* margin: 0 auto; */
     font-weight: 300;
-    /* font-size: 20px; */
-    /* white-space: nowrap; */
-    flex: 1 0 30%;
+    // white-space: nowrap;
+    min-width: 160px;
+    flex: 0 1 25%;
     color: #989898;
+    @media (max-width: 960px) {
+      min-width: 110px;
+    }
   }
   &__prop-value {
-    padding: 3px 0px 0px 0px; 
-    /* margin: 0px 0px 0px 0px; */
-    /* margin: 0 auto; */
-    flex: 1 1 70%;
-    font-weight: 400;
-    font-size: 14px;
+    padding: 4px 0px 0px 0px;
+    flex: 0 1 auto;
+    // font-size: 14px;
     color: #6f6f6f;
   }
 }

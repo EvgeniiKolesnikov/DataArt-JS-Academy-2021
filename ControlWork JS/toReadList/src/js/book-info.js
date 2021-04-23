@@ -37,8 +37,8 @@ export class BookInfo {
     if (bookKey) {
       this.bookInfo.innerHTML +=  
       `<div class="book-info__prop">
-        <div class="book-info__prop-title">${propTitle}</div>
-        <div class="book-info__prop-value">${bookKey}</div>
+        <span class="book-info__prop-title">${propTitle}</span>
+        <span class="book-info__prop-value">${bookKey}</span>
       </div>`
     }
   }
@@ -80,7 +80,7 @@ export class BookInfo {
     if (item == 'jpn') item = 'jp';
     if (item == 'por') item = 'pt';
     if (item.length > 2) return ``;
-    return `<img class="book-info__flag" src="https://flagcdn.com/16x12/${item}.png"></img>`;
+    return `<img class="book-info__flag" src="https://flagcdn.com/16x12/${item}.png"></img> `;
   }
 }
 
