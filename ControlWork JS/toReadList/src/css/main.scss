@@ -2,8 +2,16 @@
 @import "./variables.scss";
 @import "./reset.scss";
 
-
 @import "./components/header.scss";
-@import "./components/books-ui.scss";
+@import "./components/book-shelf.scss";
+
 @import "./components/input.scss"; 
+@import "./components/scroll.scss"; 
 @import "./components/spinner.scss";
+@import "./components/book-card.scss";
+
+@import "./components/books-list.scss";
+@import "./components/book-info.scss";
+@import "./components/read-list.scss";
+
+

@@ -1,9 +1,10 @@
 .header {
   width: 100%;
-  padding: 7px 0px;
+  padding: 4px 0px;
   &__title {
     margin: 0 auto;
     font-weight: 300;
+    font-size: 27px;
     text-align: center;
     color: $lightBlack6;
   }

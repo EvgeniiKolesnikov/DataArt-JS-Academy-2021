@@ -1,5 +1,5 @@
-import { Api } from "./api.js";
-import { BooksUI } from "./books-ui.js";
-import { BooksInfo } from "./bookInfo.js";
+'use strict';
+import { Api } from "./api";
+import { BooksList } from "./books-list";
 
-new BooksUI(new Api());
+new BooksList(new Api());

@@ -22,45 +22,45 @@
     </header>
     <!-- main -->
     <main class="page">
-      <section class="app">
+      <div class="book-shelf">
 
-        <div class="search left-block">
-          <div class="input">
+        <section class="books-list left-block">
+          <div class="input input--books-list">
             <div class="input__box">
-              <div class="input__icon"></div>
-              <input class="input__control" id="searchInput" placeholder="Search books" type="search" name="search"
-                title="Поиск книг">
-              <div class="input__clear" unselectable="on" title="Очистить"></div>
+              <input class="input__control" id="searchInput" placeholder="Search books" type="text" name="search"
+                title="Search books">
+              <div class="input__clear" id="searchClear" unselectable="on" title="Clear"></div>
             </div>
             <button class="input__button" id="searchButton">Go!</button>
           </div>
-          <div class="scroll">
+          <div class="scroll scroll--books-list">
             <div class="spinner" id="spinner">
               <div class="blob top"></div>
               <div class="blob bottom"></div>
               <div class="blob left"></div>
               <div class="blob move-blob"></div>
             </div>
-            <div class="search__result" id="searchResult"></div>
+            <div class="books-list__container" id="searchResult"></div>
           </div>
-          <div class="search__info">
-              <div class="search__found" id="searchFound">Found books: 168</div>
+          <div class="books-list__about">
+              <div class="books-list__found" id="searchFound">Found books: 0</div>
           </div>
-        </div>
+        </section>
 
-        <div class="book center-block">
-          <div class="scroll">
-            <div class="book__info" id="bookInfo"></div>
+        <section class="book-info center-block">
+          <div class="book-info__header" id="bookInfoHeader"></div>
+          <div class="scroll scroll--book-info">
+            <div class="book-info__props" id="bookInfo"></div>
           </div>
-        </div>
+        </section>
 
-        <div class="bookmarks right-block">
-          <div class="scroll">
-            <div class="bookmarks__info" id="bookmarks">To read list...</div>
+        <section class="read-list right-block">
+          <div class="scroll scroll--read-list">
+            <div class="read-list__container" id="read-list">To read list...</div>
           </div>
-        </div>
+        </section>
 
-      </section>
+      </div>
     </main>
     <!-- footer -->
     <footer class="footer"></footer>

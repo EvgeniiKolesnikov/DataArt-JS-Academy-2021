@@ -1,6 +1,7 @@
-import { BookInfo } from "./bookInfo";
+'use strict';
+import { BookInfo } from "./book-info";
 
-export class BooksUI {
+export class BooksList {
   searchResult;
   bookInfo;
   searchFound;
@@ -13,13 +14,26 @@ export class BooksUI {
     this.searchResult = document.getElementById("searchResult");
     this.bookInfo = document.getElementById("bookInfo");
     this.searchFound = document.getElementById("searchFound");
-
     const searchInput = document.getElementById("searchInput");
+    const searchClear = document.getElementById("searchClear");
     const searchButton = document.getElementById("searchButton");
     const spinner = document.getElementById("spinner");
+    // const inputControl = document.querySelector('.input__control');
+    // const inputClear = document.querySelector('.input__clear');
+    // const inputButton = document.querySelector('.input__button');
+    // const spinner = document.querySelector('.spinner');
+
     const bookInfo = new BookInfo();
 
     searchButton.addEventListener("click", () => this.getData(api));
+    searchInput.addEventListener("keyup", e => {
+      if(e.code === 'Enter') {
+        this.getData(api);
+      }
+    });
+
+    searchInput.addEventListener("input", (e) => (this.onChangeInput(e)));
+    searchClear.addEventListener("click", (e) => (this.onClickClear(e)));
 
     this.searchResult.addEventListener("click", e => {
       this.bookInfo.innerHTML = ``;
@@ -34,14 +48,26 @@ export class BooksUI {
         const LastSelectedBook = this.searchResult
           .querySelector("#" + this.LastSelectedBook.id);
         if (LastSelectedBook) {
-          LastSelectedBook.classList.remove("select-book");
+          LastSelectedBook.classList.remove("book-card--active");
         }
       }
       this.LastSelectedBook = selectBook;
-      targetDiv.classList.add("select-book");
+      targetDiv.classList.add("book-card--active");
       bookInfo.setBookInfo(selectBook);
     });
   }
+
+  onChangeInput(e) {
+    searchClear.style.display = (e.currentTarget.value == "" || undefined) ? 'none' : 'block';
+    // getData(api);
+  }
+  
+  onClickClear(e) {
+    searchInput.value = "";
+    e.currentTarget.style.display = 'none';
+    this.searchResult.innerHTML = ``;
+  }
+
   getData(api) {
     const querry = searchInput.value;
     if (!querry) {
@@ -62,35 +88,18 @@ export class BooksUI {
       item.id = item.key.split("/").pop();
     });
     this.currentPage = page.docs;
-    // const booksHTML = this.currentPage.reduce((acc, item) => {
-    //   return (acc +
-    //     `<div id="${item.id}" class="book-info">${item.title} (${item.language ? item.language.join(", ") : `language`})</div>`
-    //   );
-    // }, "");
-
-    // const booksHTML = this.currentPage.reduce((acc, item) => {
-    //   return (acc +
-    //     `<div id="${item.id}" class="book-info">
-    //       <div class="book-info__title">${item.title}</div> 
-    //       ${item.language ? `<div class="book-info__lang">${item.language.join(", ")}</div>` : ``}
-    //     </div>`
-    //   );
-    // }, "");
 
     const booksHTML = this.currentPage.reduce((acc, item) => {
       return (acc +
-        `<div id="${item.id}" class="book-info">
-          <div class="book">
-          <span class="book-info__title">${item.title}</span> 
-          ${item.language ? `<span class="book-info__lang">${item.language.join(", ")}</span>` : ``}
+        `<div id="${item.id}" class="book-card">
+          <div class="book-card__container">
+            <span class="book-card__title">${item.title}</span> 
+            ${item.language ? `<span class="book-card__lang">${item.language.join(", ")}</span>` : ``}
+            ${item.subtitle ? `<div class="book-card__subtitle">${item.subtitle}</div>` : ``}
           </div> 
-          ${item.subtitle ? `<div class="book-info__subtitle">${item.subtitle}</div>` : ``}
         </div>`
       );
     }, "");
-
     this.searchResult.innerHTML = booksHTML;
   }
 }
-
-{/* <div class="book-info__subtitle">${item.subtitle}</div>  */}

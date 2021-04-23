@@ -1,11 +1,19 @@
 .input {
   display: flex;
+  height: 51px;
   gap: 10px;
   flex-direction: row;
   align-items: center;
   /* margin: 10px 10px 10px 10px; */
-  padding: 10px 10px 10px 10px;
+  // padding: 10px 10px 10px 10px;
   border-bottom: 1px solid gainsboro;
+  &::-ms-clear {
+    width : 0;
+    height: 0;
+  }
+  &--books-list { 
+    padding: 10px 10px 10px 10px;
+  }
 }
 
 .input__box {
@@ -26,21 +34,22 @@
     box-shadow: 0 0px 6px rgba(0, 0, 0, .08);
     border: 1px solid $blue;
   }
-}
-
-
-.input__icon {
-  width: 20px;
-  height: 20px;
-  opacity: 0.2;
-  margin: 0px 0px 2px 4px;
-  position: absolute;
-  background-repeat: no-repeat;
-  background-image: url(../svg/icon_search.svg);
-  background-size: cover;
+  &::after {
+    position: absolute;
+    content: '';
+    left: 0px;
+    width: 20px;
+    height: 20px;
+    opacity: 0.2;
+    margin: 0px 0px 2px 4px;
+    background-repeat: no-repeat;
+    background-image: url(../svg/icon_search.svg);
+    background-size: cover;
+  }
 }
 
 .input__control {
+  position: relative;
   width: 100%;
   padding: 14px 30px;
   border-radius: 30px;
@@ -55,19 +64,22 @@
 }
 
 .input__clear {
+  position: absolute;
+  right: 0;
   width: 20px;
   height: 20px;
-  margin: 5px 3px 0px 0;
+  margin: 5px 0px 0px 0;
+
   cursor: pointer;
   opacity: 0.2;
   background-color: black;
   -webkit-mask: url(../svg/icon_clear.svg) no-repeat center;
   mask: url(../svg/icon_clear.svg) no-repeat center;
-  /* display: none; */
-}
-.input__clear:hover {
-  opacity: 0.7;
-  background-color: red;
+  display: none; 
+  &:hover {
+    opacity: 0.7;
+    background-color: red;
+  }
 }
 
 .input__button {
@@ -80,10 +92,10 @@
   border-radius: 5px; 
   text-shadow: none;
   border: none;
-}
-.input__button:hover {
-  background-color: #258ace;
-}
-.input__button:active {
-  background-color: #176da7;
+  &:hover {
+    background-color: #258ace;
+  }
+  &:active {
+    background-color: #176da7;
+  }
 }
