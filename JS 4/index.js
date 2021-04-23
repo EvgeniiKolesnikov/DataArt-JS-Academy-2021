@@ -92,7 +92,7 @@ function getRandomColor() {
 }
 
 const getData = async () => {
-  let response = await fetch(`${API_URL}`);
+  let response = await fetch(`${API_URL}`, {mode: 'cors'});
   if (response.ok) {
     let data = await response.json();
     // console.log(data);
