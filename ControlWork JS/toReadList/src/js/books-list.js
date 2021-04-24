@@ -1,28 +1,29 @@
 'use strict';
+import { Api } from "./api";
+import { BookCard } from "./book-card";
 import { BookInfo } from "./book-info";
 
 export class BooksList {
-  searchResult;
-  bookInfo;
-  searchFound;
-
+  // pageNum = 1;
+  // globalPage = [];
   currentPage = [];
+  bookCard = new BookCard();
 
-  api;
+  constructor() {
+    const api = new Api();
 
-  constructor(api) {
-    this.searchResult = document.getElementById("searchResult");
-    this.bookInfo = document.getElementById("bookInfo");
-    this.searchFound = document.getElementById("searchFound");
-    const searchInput = document.getElementById("searchInput");
-    const searchClear = document.getElementById("searchClear");
-    const searchButton = document.getElementById("searchButton");
-    const spinner = document.getElementById("spinner");
+    const booksList =     document.querySelector("#booksList");
+    const booksShown =    document.querySelector("#booksShown");
+    const booksFound =    document.querySelector("#booksFound");
 
-    const bookInfo = new BookInfo();
+    const searchInput =   document.querySelector("#searchInput");
+    const searchClear =   document.querySelector("#searchClear");
+    const searchButton =  document.querySelector("#searchButton");
 
-    searchButton.addEventListener("click", () => this.getData(api));
-    searchInput.addEventListener("keyup", e => {
+    const spinnerBig =    document.querySelector("#spinnerBig");
+
+    searchButton.addEventListener("click", (e) => this.getData(api));
+    searchInput.addEventListener("keyup", (e) => {
       if(e.code === 'Enter') {
         this.getData(api);
       }
@@ -31,27 +32,7 @@ export class BooksList {
     searchInput.addEventListener("input", (e) => (this.onChangeInput(e)));
     searchClear.addEventListener("click", (e) => (this.onClickClear(e)));
 
-    this.searchResult.addEventListener("click", e => {
-      this.bookInfo.innerHTML = ``;
-      const targetDiv = e.target;
-      const id = targetDiv.id;
-      const selectBook = this.currentPage.find(item => item.id === id);
-      // console.log(`selectBook = ${selectBook}`);
-      if (!selectBook) {
-        return;
-      }
-      if (this.LastSelectedBook) {
-        const LastSelectedBook = this.searchResult
-          .querySelector("#" + this.LastSelectedBook.id);
-        if (LastSelectedBook) {
-          LastSelectedBook.classList.remove("book-card--active");
-        }
-      }
-      this.LastSelectedBook = selectBook;
-      targetDiv.classList.add("book-card--active");
-      bookInfo.setBookInfo(selectBook);
-    });
-  }
+    }
 
   onChangeInput(e) {
     searchClear.style.display = (e.currentTarget.value == "" || undefined) ? 'none' : 'block';
@@ -61,7 +42,7 @@ export class BooksList {
   onClickClear(e) {
     searchInput.value = "";
     e.currentTarget.style.display = 'none';
-    this.searchResult.innerHTML = ``;
+    booksList.innerHTML = ``;
   }
 
   getData(api) {
@@ -69,23 +50,36 @@ export class BooksList {
     if (!querry) {
       return;
     }
-    this.searchResult.innerHTML = ``;
-    spinner.style.display = "block";
-    api.search(querry).then(page => {
-      this.processSearchResult(page);
-      this.searchFound.innerHTML = `Found books: ${page.numFound}`;
-      spinner.style.display = "none";
+    booksList.innerHTML = ``;
+    spinnerBig.style.display = "block";
+    api.search(querry, 1).then(page => {
+      this.processbooksList(page);
+      this.bookCard.setCurrentPage(this.currentPage);
+      // console.log(this.currentPage);
+      booksShown.innerHTML = `Shown books: ${this.numberShownBooks(page.start, page.docs.length)}`;
+      booksFound.innerHTML = `Found books: ${page.numFound}`;
+      spinnerBig.style.display = "none";
       console.log(page);
     });
   }
 
-  processSearchResult(page) {
+  numberShownBooks( start, pageSize) {
+    let numberShownBooks;
+    if (pageSize == 100) {
+      numberShownBooks = start + 100;
+    } else {
+      numberShownBooks = start + pageSize;
+    }
+    return numberShownBooks;
+  }
+
+  processbooksList(page) {
     page.docs.forEach(item => {
       item.id = item.key.split("/").pop();
     });
     this.currentPage = page.docs;
 
-    const booksHTML = this.currentPage.reduce((acc, item) => {
+    const booksListHTML = this.currentPage.reduce((acc, item) => {
       return (acc +
         `<div id="${item.id}" class="book-card">
           <div class="book-card__container">
@@ -96,6 +90,6 @@ export class BooksList {
         </div>`
       );
     }, "");
-    this.searchResult.innerHTML = booksHTML;
+    booksList.innerHTML = booksListHTML;
   }
 }

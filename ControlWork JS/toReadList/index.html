@@ -46,24 +46,33 @@
             </div>
             <button class="input__button" id="searchButton">Go!</button>
           </div>
-          <div class="scroll scroll--books-list">
-            <div class="spinner" id="spinner">
+          <div class="scroll scroll--books-list" id="scrollBooksList">
+            <div class="spinner-big" id="spinnerBig">
               <div class="blob top"></div>
               <div class="blob bottom"></div>
               <div class="blob left"></div>
               <div class="blob move-blob"></div>
             </div>
-            <div class="books-list__container" id="searchResult"></div>
+            <div class="books-list__container" id="booksList"></div>
+            <div class="spinner__container" id="spinnerMini">
+              <div class="spinner-mini">
+                <div class="blob blob--mini top"></div>
+                <div class="blob blob--mini bottom"></div>
+                <div class="blob blob--mini left"></div>
+                <div class="blob blob--mini move-blob"></div>
+              </div>
+            </div>
           </div>
           <div class="books-list__about">
-              <div class="books-list__found" id="searchFound">Found books: 0</div>
+            <div class="books-list__found" id="booksShown">Shown books: 0</div>
+            <div class="books-list__found" id="booksFound">Found books: 0</div>
           </div>
         </section>
 
         <section class="book-info center-block">
           <div class="book-info__header" id="bookInfoHeader"></div>
           <div class=" scroll--book-info">
-            <div class="book-info__props" id="bookInfo"></div>
+            <div class="book-info__props" id="bookInfoProps"></div>
           </div>
         </section>
 

@@ -1,28 +1,23 @@
 'use strict';
 export class BookInfo {
-  bookInfoHeader;
-  bookInfo;
-
   constructor() {
     this.bookInfoHeader = document.getElementById("bookInfoHeader");
-    this.bookInfo = document.getElementById("bookInfo");
+    this.bookInfoProps = document.getElementById("bookInfoProps");
   }
 
   setBookInfo(book) {
-    this.bookInfo.innerHTML = ``;
     this.bookInfoHeader.innerHTML = ``;
-    // this.bookInfo.innerHTML += book.title ? `<h2 class="book-info__title">${book.title}</h2>` : ``; 
-    // book.title && (this.bookInfo.innerHTML += `<h3 class="book-info__title">${book.title}</h3>`);
-    if (book.title) {
-      this.bookInfoHeader.innerHTML += `<h2 class="book-info__title">${book.title}</h2>`; 
-    }
+    this.bookInfoProps.innerHTML = ``;
+    // this.bookInfoProps.innerHTML += book.title ? `<h2 class="book-info__title">${book.title}</h2>` : ``; // var 3
+    // book.title && (this.bookInfoProps.innerHTML += `<h3 class="book-info__title">${book.title}</h3>`);   // var 2
+    this.bookInfoHeader.innerHTML += `<h2 class="book-info__title">${book.title}</h2>`;                     // var 1
     if (book.subtitle) {
-      this.bookInfo.innerHTML += `<h3 class="book-info__subtitle">${book.subtitle}</h3>` 
+      this.bookInfoProps.innerHTML += `<h3 class="book-info__subtitle">${book.subtitle}</h3>` 
     }
-    
-    this.bookInfo.innerHTML += `<img class="book-info__img" id="bookPicture"></img>`; 
-    this.loadBookImage(book);
-
+    this.bookInfoProps.innerHTML += `<img class="book-info__img" id="bookPicture"></img>`; 
+    if (book.isbn) {
+      this.loadBookImage(book);
+    }
     this.addPropsHtml(`Author:`, book.author_name?.join(", "));
     this.addPropsHtml(`Languages available:`, book.language
       ?.map(item => this.getFlagHTML(item) + item)
@@ -34,7 +29,7 @@ export class BookInfo {
 
   addPropsHtml(propTitle, bookKey) {
     if (bookKey) {
-      this.bookInfo.innerHTML +=  
+      this.bookInfoProps.innerHTML +=  
       `<div class="book-info__prop">
         <span class="book-info__prop-title">${propTitle}</span>
         <span class="book-info__prop-value">${bookKey}</span>
@@ -75,6 +70,7 @@ export class BookInfo {
     if (item == 'por') item = 'pt';
     if (item == 'iri') item = 'ie';
     if (item == 'alb') item = 'al';
+    if (item == 'scc') item = 'rs';
     if (item.length > 2) return ``;
     return `<img class="book-info__flag" src="https://flagcdn.com/16x12/${item}.png"></img> `;
   }
