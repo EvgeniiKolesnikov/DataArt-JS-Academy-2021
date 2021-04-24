@@ -23,6 +23,7 @@ export class BookInfo {
     this.bookInfo.innerHTML += `<img class="book-info__img" id="bookPicture"></img>`; 
     this.loadBookImage(book);
 
+    this.addPropsHtml(`Author:`, book.author_name?.join(", "));
     this.addPropsHtml(`Languages available:`, book.language
       ?.map(item => this.getFlagHTML(item) + item)
       .join(", "));
@@ -72,6 +73,8 @@ export class BookInfo {
     if (item == 'ita') item = 'it';
     if (item == 'jpn') item = 'jp';
     if (item == 'por') item = 'pt';
+    if (item == 'iri') item = 'ie';
+    if (item == 'alb') item = 'al';
     if (item.length > 2) return ``;
     return `<img class="book-info__flag" src="https://flagcdn.com/16x12/${item}.png"></img> `;
   }
