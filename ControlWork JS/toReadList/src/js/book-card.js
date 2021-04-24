@@ -3,14 +3,14 @@ import { BookInfo } from "./book-info";
 
 export class BookCard {
   constructor() {
-    this.currentPage;
+    this.currentPage = [];
     this.bookInfo = new BookInfo(); // тоже самое, что и перед конструктором без this
-    const booksList = document.querySelector("#booksList");
+    // const booksList = document.querySelector("#booksList");
     booksList.addEventListener("click", e => this.onClickBookCard(e, this.currentPage));
   }
 
-  setCurrentPage(gottenCurrentPage) {
-    this.currentPage = gottenCurrentPage;
+  setCurrentPage(page) {
+    this.currentPage = page.docs;
   }
 
   onClickBookCard(e, currentPage) {
