@@ -6,24 +6,22 @@ export class BookInfo {
   constructor() {
     this.bookInfoHeader = document.getElementById("bookInfoHeader");
     this.bookInfo = document.getElementById("bookInfo");
-
   }
 
   setBookInfo(book) {
     this.bookInfo.innerHTML = ``;
     this.bookInfoHeader.innerHTML = ``;
-    // this.bookInfo.innerHTML += book.title ? `<h3 class="book-info__title">${book.title}</h3>` : ``; 
+    // this.bookInfo.innerHTML += book.title ? `<h2 class="book-info__title">${book.title}</h2>` : ``; 
     // book.title && (this.bookInfo.innerHTML += `<h3 class="book-info__title">${book.title}</h3>`);
     if (book.title) {
-      this.bookInfoHeader.innerHTML += `<h3 class="book-info__title">${book.title}</h3>`; 
+      this.bookInfoHeader.innerHTML += `<h2 class="book-info__title">${book.title}</h2>`; 
     }
     if (book.subtitle) {
-      this.bookInfoHeader.innerHTML += `<h6 class="book-info__subtitle">${book.subtitle}</h6>` 
+      this.bookInfo.innerHTML += `<h3 class="book-info__subtitle">${book.subtitle}</h3>` 
     }
-    if (book.isbn) {
-      this.bookInfo.innerHTML += `<img class="book-info__img" id="bookPicture"></img>`; 
-      this.loadBookImage(book.isbn)
-    }
+    
+    this.bookInfo.innerHTML += `<img class="book-info__img" id="bookPicture"></img>`; 
+    this.loadBookImage(book);
 
     this.addPropsHtml(`Languages available:`, book.language
       ?.map(item => this.getFlagHTML(item) + item)
@@ -43,9 +41,9 @@ export class BookInfo {
     }
   }
 
-  async loadBookImage(isbn) {
+  async loadBookImage(book) {
     try {
-      let url = `http://covers.openlibrary.org/b/isbn/${isbn[0]}-M.jpg?default=false`;
+      let url = `http://covers.openlibrary.org/b/isbn/${book.isbn[0]}-M.jpg?default=false`;
       let response = await fetch(`${url}`, {mode: 'cors'});
       if (response.ok) {
         let content = await response.blob();
@@ -78,12 +76,3 @@ export class BookInfo {
     return `<img class="book-info__flag" src="https://flagcdn.com/16x12/${item}.png"></img> `;
   }
 }
-
-// http://covers.openlibrary.org/b/id/240727-S.jpg
-// http://covers.openlibrary.org/b/olid/OL7440033M-S.jpg
-// http://covers.openlibrary.org/b/isbn/0385472579-S.jpg
-// http://covers.openlibrary.org/b/isbn/9780385472579-S.jpg
-// http://covers.openlibrary.org/b/lccn/93005405-S.jpg
-// http://covers.openlibrary.org/b/oclc/28419896-S.jpg
-// http://covers.openlibrary.org/b/goodreads/979250-S.jpg
-// http://covers.openlibrary.org/b/librarything/192819-S.jpg

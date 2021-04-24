@@ -26,14 +26,16 @@
   }
   }
   &__title {
-    padding: 0px 0px 0px 0px;
+    padding: 0px 7px;
     margin: 0 auto;
+    max-height: 50px;
+    overflow: hidden;
     font-weight: 400;
     font-size: 20px;
     color: #333;
   }
   &__subtitle {
-    padding: 3px 0px 0px 0px;
+    padding: 0px 0px 10px 0px;
     margin: 0 auto;
     font-weight: 400;
     font-size: 14px;

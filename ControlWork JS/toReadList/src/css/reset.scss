@@ -9,13 +9,7 @@
 body {
   overflow-x: hidden;
   overflow-y: auto;
-  background-color: $bg-color;
-}
-main {
-  max-width: 1280px;
-  margin: auto;
-  // new
-  padding-top: 40px;
+  background-color: var(--bg-color);
 }
 
 li {
@@ -28,6 +22,7 @@ label {
   display: none;
 }
 button {
+  background: transparent;
   cursor: pointer;
 }
 button:active, button:focus {

@@ -18,7 +18,20 @@
   <div class="wrapper">
     <!-- header -->
     <header class="header">
-      <h1 class="header__title">Books</h1>
+      <div class="header__container">
+        <h1 class="header__title">Books</h1>
+        <div class="header__menu">
+          <button class="header__menu-item" id="">
+            <img class="header__menu-img" src="./src/img/search.png" title="Open Search Menu" alt="searchIcon">
+          </button>
+          <button class="header__menu-item" id="">
+            <img class="header__menu-img" src="./src/img/doc.png" alt="readListIcon" title="Open Read List">
+          </button>
+          <button class="header__menu-item" value="Light/Dark" id="toggleThemeButton">
+            <img class="header__menu-img" src="./src/img/sun.png" alt="switchIcon" title="Switch Color Theme">
+          </button>
+        </div>
+      </div>
     </header>
     <!-- main -->
     <main class="page">
@@ -60,8 +73,8 @@
           </div>
           <div class="scroll scroll--read-list">
             <div class="read-list__container" id="read-list">
-              Book N <br>Book N <br>Book N <br>Book N <br>Book N <br>Book N <br>
-              Book N <br>Book N <br>Book N <br>Book N <br>Book N <br>Book N <br>
+              Book N <br>Book N <br>Book N <br>Book N <br>
+              Book N <br>Book N <br>Book N <br>Book N <br>
             </div>
           </div>
         </section>

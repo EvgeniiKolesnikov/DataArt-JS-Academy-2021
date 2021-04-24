@@ -18,10 +18,6 @@ export class BooksList {
     const searchClear = document.getElementById("searchClear");
     const searchButton = document.getElementById("searchButton");
     const spinner = document.getElementById("spinner");
-    // const inputControl = document.querySelector('.input__control');
-    // const inputClear = document.querySelector('.input__clear');
-    // const inputButton = document.querySelector('.input__button');
-    // const spinner = document.querySelector('.spinner');
 
     const bookInfo = new BookInfo();
 

@@ -1,12 +1,50 @@
 // Colors
-$bg-color: #fafafa;
-
 $white: #ffffff;
 $blue: #2f9ee7;
 $orange: rgb(255, 196, 0);
-
 
 $darkBlack: #171614;
 $lightBlack4:#444444;
 $lightBlack6: #666666;
 $lightBlack7: #777777;
+
+// Light theme colors
+:root {
+  --bg-color: #fafafa;
+
+  --red-hue: rgb(121, 0, 0);
+  --blue-hue: rgb(0, 57, 121);
+  --green-hue: rgb(0, 121, 16);
+  --main-hue: var(--red-hue);
+
+  --theme-darkness: 1;
+
+  --nav-bg-color: var(--main-hue);
+  --nav-text-color: var(--main-hue);
+  --container-bg-color: var(--main-hue);
+
+  --content-text-color: var(--main-hue);
+  --title-color: var(--bg-color);
+  --footer-bg-color: var(--main-hue);
+
+  --button-text-color: var(--main-hue);
+}
+
+// Dark theme colors
+:root[theme='dark'] {
+  --bg-color: rgb(49, 49, 49);
+
+  --red-hue: rgb(255, 145, 145);
+  --blue-hue: rgb(145, 174, 255);
+  --green-hue: rgb(145, 255, 154);
+  --main-hue: var(--blue-hue);
+
+  --theme-darkness: 1;
+  --nav-bg-color: var(--main-hue);
+  --nav-text-color: var(--main-hue);
+  --container-bg-color: var(--main-hue);
+  --content-text-color: var(--main-hue);
+  --title-color: var(--bg-color);
+  --footer-bg-color: var(--main-hue);
+  --button-text-color: var(--main-hue);
+}
