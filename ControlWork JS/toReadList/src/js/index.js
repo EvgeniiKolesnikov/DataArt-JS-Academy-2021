@@ -3,10 +3,10 @@
 import { BooksList } from "./books-list";
 import { LoadData } from "./loadData";
 import { ScrollController } from "./scroll-controller";
-import { Search } from "./search-controller";
+import { SearchController } from "./search-controller";
 import { ToggleTheme } from "./toggle-theme";
 
 new LoadData();
-new Search();
+new SearchController();
 new ToggleTheme();
 new ScrollController();

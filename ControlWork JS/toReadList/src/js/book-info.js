@@ -39,7 +39,7 @@ export class BookInfo {
 
   async loadBookImage(book) {
     try {
-      let url = `http://covers.openlibrary.org/b/isbn/${book.isbn[0]}-M.jpg?default=false`;
+      let url = `http://covers.openlibrary.org/b/isbn/${book.isbn[0]}-L.jpg?default=false`;
       let response = await fetch(`${url}`, {mode: 'cors'});
       if (response.ok) {
         let content = await response.blob();
@@ -61,6 +61,7 @@ export class BookInfo {
     if (item == 'eng') item = 'gb';
     if (item == 'rus') item = 'ru';
     if (item == 'spa') item = 'es';
+    if (item == 'esp') item = 'es';
     if (item == 'ger') item = 'de';
     if (item == 'chi') item = 'cn';
     if (item == 'ukr') item = 'ua';
@@ -71,7 +72,37 @@ export class BookInfo {
     if (item == 'iri') item = 'ie';
     if (item == 'alb') item = 'al';
     if (item == 'scc') item = 'rs';
-    if (item.length > 2) return ``;
+    if (item == 'dut') item = 'nl';
+    if (item == 'dan') item = 'dk';
+    if (item == 'cze') item = 'cz';
+    if (item == 'mon') item = 'mn';
+    if (item == 'scr') item = 'hr';
+    if (item == 'hrv') item = 'hr';
+    if (item == 'ara') item = 'ae';
+    if (item == 'pol') item = 'pl';
+    if (item == 'fin') item = 'fi';
+    if (item == 'swe') item = 'se';
+    if (item == 'rum') item = 'ro';
+    if (item == 'est') item = 'ee';
+    if (item == 'sco') item = 'gb-sct';
+    if (item == 'grc') item = 'gr';
+    if (item == 'hun') item = 'hu';
+    if (item == 'slo') item = 'sk';
+    if (item == 'kor') item = 'kr';
+    if (item == 'ice') item = 'is';
+    if (item == 'bul') item = 'bg';
+    if (item == 'tur') item = 'tr';
+    if (item == 'gre') item = 'gr';
+    if (item == 'arm') item = 'am';
+    if (item == 'wal') item = 'gb-wls';
+    if (item == 'amh') item = 'et';
+    if (item == 'mol') item = 'md';
+    if (item == 'tgl') item = 'ph';
+    if (item == 'heb') item = 'il';
+    if (item == 'lit') item = 'lt';
+    if (item == 'vie') item = 'vn';
+    if (item == 'nor') item = 'no';
+    if (item.length === 3) return ``;
     return `<img class="book-info__flag" src="https://flagcdn.com/16x12/${item}.png"></img> `;
   }
 }
