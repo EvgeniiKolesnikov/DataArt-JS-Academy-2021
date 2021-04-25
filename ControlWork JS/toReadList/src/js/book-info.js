@@ -20,23 +20,23 @@ export class BookInfo {
 
     let returnMyBooks = JSON.parse(localStorage.getItem("myBooks"))
     if (returnMyBooks) {
-      console.log('yes MyBook DB');
+      // console.log('yes MyBook DB');
       myBooks = returnMyBooks.slice();
       let checkBookInStorage = returnMyBooks.filter(item => 
         item.id == this.targetBook.id).length > 0;
       console.log("book in storage? " + checkBookInStorage);
       if (!checkBookInStorage) {
-        console.log('push book in storage');
+        // console.log('push book in storage');
         myBooks.push(this.targetBook);
-        console.log(myBooks);
+        // console.log(myBooks);
       }
     } else {
-      console.log('no MyBook DB');
+      // console.log('no MyBook DB');
       myBooks.push(this.targetBook);
     }
 
-    console.log(returnMyBooks);
-    console.log(myBooks);
+    // console.log(returnMyBooks);
+    // console.log(myBooks);
 
     let serialMyBooks = JSON.stringify(myBooks); //сериализуем его
     // console.log(serialMyBooks);
