@@ -5,6 +5,7 @@ import { Api } from "./api";
 export class BookInfo {
   api = new Api();
   constructor() {
+    console.log('BookInfo');
     this.bookInfoHeader = document.getElementById("bookInfoHeader");
     this.bookInfoProps = document.getElementById("bookInfoProps");
   }
@@ -42,7 +43,6 @@ export class BookInfo {
   }
 
   loadBookImage(book) {
-    
     this.api.searchBookImage(book.isbn[0]).then(blob => {
       let objectURL = window.URL.createObjectURL(blob);
       let bookPicture = document.getElementById('bookPicture');
@@ -52,25 +52,6 @@ export class BookInfo {
     })
     .catch ((error) => console.log(error));
   }
-
-  // async loadBookImage(book) {
-  //   try {
-  //     let url = `http://covers.openlibrary.org/b/isbn/${book.isbn[0]}-L.jpg?default=false`;
-  //     let response = await fetch(`${url}`, {mode: 'cors'});
-  //     if (response.ok) {
-  //       let content = await response.blob();
-  //       let objectURL = URL.createObjectURL(content);
-  //       let bookPicture = document.getElementById('bookPicture');
-  //       if (bookPicture.src === '') {
-  //         bookPicture.src = objectURL;
-  //       }
-  //     } else {
-  //       console.error(`HTTP status: error ${response.status}`);
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
 
   getFlagHTML(item) {
     // console.log(item);

@@ -1,29 +1,28 @@
 'use strict';
+import { LoadData } from "./loadData";
 export class ScrollController {
-  bookInfoHeader;
-  bookInfo;
-  count = 0;
-
-  constructor() {
+  canAddData = true;
+  isLoadedNewData = false;
+  constructor(loadData) {
+    console.log('ScrollController');
+    // console.log(loadData);
+    this.loadData = loadData;
     const scrollBooksList = document.querySelector('#scrollBooksList');
     const spinnerMini = document.querySelector('#spinnerMini');
     scrollBooksList.addEventListener("scroll", (e) => {
-      // console.log(e);
       this.isScrolledIntoView(scrollBooksList);
     });
   }
 
   isScrolledIntoView(scroll) {
-    // console.log(`=== ${this.count++} ===`);
     let docViewTop = scroll.scrollTop; 
     let docViewBottom = docViewTop + scroll.offsetHeight;
-    let scrollHeigh = scroll.scrollHeight; 
-    // console.log(`docViewTop = ${docViewTop}`);
-    // console.log(`docViewBottom = ${docViewBottom}`);
-    // console.log(`scrollHeigh = ${scrollHeigh}`);
+    let scrollHeigh = scroll.scrollHeight;
     if (docViewBottom + 100 >= scrollHeigh) {
-      console.log('load new data');
-      spinnerMini.style.display = 'block';
+      // scroll in target bottom
+      if (this.canAddData && this.loadData.pageLoaded) {
+        this.loadData.addData();
+      } 
     }
   }
 }

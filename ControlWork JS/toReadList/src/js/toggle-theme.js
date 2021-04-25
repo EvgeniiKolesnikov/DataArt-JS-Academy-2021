@@ -3,6 +3,7 @@
 export class ToggleTheme {
   toggleButton;
   constructor() {
+    console.log('ToggleTheme');
     this.toggleButton = document.querySelector("#toggleThemeButton");
     // get local storage 
     // will be here

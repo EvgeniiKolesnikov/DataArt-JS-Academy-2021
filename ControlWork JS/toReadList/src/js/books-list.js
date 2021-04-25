@@ -2,6 +2,7 @@
 
 export class BooksList {
   constructor() {
+    console.log('BooksList');
     this.currentPage = [];
     // const booksList =     document.querySelector("#booksList");
     // const booksShown =    document.querySelector("#booksShown");
@@ -24,12 +25,14 @@ export class BooksList {
         </div>`
       );
     }, "");
-    booksList.innerHTML = booksListHTML;
-    booksShown.innerHTML = `Shown books: ${this.numShown(page.start, page.docs.length)}`;
+    booksList.innerHTML += booksListHTML;
+    booksShown.innerHTML = `Shown books: ${this.numShown(page)}`;
     booksFound.innerHTML = `Found books: ${page.numFound}`;
   }
   
-  numShown(start, pageSize) {
+  numShown(page) {
+    const start = page.start;
+    const pageSize = page.docs.length;
     let numberShownBooks;
     if (pageSize == 100) {
       numberShownBooks = start + 100;
