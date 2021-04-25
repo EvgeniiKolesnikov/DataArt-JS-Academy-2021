@@ -1,5 +1,5 @@
 'use strict';
-import { LoadData } from "./loadData";
+
 export class ScrollController {
   canAddData = true;
   isLoadedNewData = false;

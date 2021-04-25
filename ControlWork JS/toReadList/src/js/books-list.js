@@ -10,9 +10,11 @@ export class BooksList {
   }
 
   addBooksList(page) {
+    console.log(page.docs[0].id);
     page.docs.forEach(item => {
       item.id = item.key.split("/").pop();
     });
+    console.log(page.docs[0].id);
     this.currentPage = page.docs;
     const booksListHTML = this.currentPage.reduce((acc, item) => {
       return (acc +

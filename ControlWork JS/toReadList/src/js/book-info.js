@@ -3,16 +3,55 @@
 import { Api } from "./api";
 
 export class BookInfo {
+  targetBook = [];
   api = new Api();
   constructor() {
     console.log('BookInfo');
     this.bookInfoHeader = document.getElementById("bookInfoHeader");
     this.bookInfoProps = document.getElementById("bookInfoProps");
+    this.addToReadButton = document.getElementById("addToReadButton");
+    addToReadButton.addEventListener("click", e => this.addToReadList());
   }
 
+  addToReadList() {
+    // console.log(this.targetBook);
+    let myBooks = [];
+    this.targetBook.read = false;
+
+    let returnMyBooks = JSON.parse(localStorage.getItem("myBooks"))
+    if (returnMyBooks) {
+      console.log('yes MyBook DB');
+      myBooks = returnMyBooks.slice();
+      let checkBookInStorage = returnMyBooks.filter(item => 
+        item.id == this.targetBook.id).length > 0;
+      console.log("book in storage? " + checkBookInStorage);
+      if (!checkBookInStorage) {
+        console.log('push book in storage');
+        myBooks.push(this.targetBook);
+        console.log(myBooks);
+      }
+    } else {
+      console.log('no MyBook DB');
+      myBooks.push(this.targetBook);
+    }
+
+    console.log(returnMyBooks);
+    console.log(myBooks);
+
+    let serialMyBooks = JSON.stringify(myBooks); //сериализуем его
+    // console.log(serialMyBooks);
+    localStorage.setItem("myBooks", serialMyBooks); 
+    
+    //очищаем все хранилище
+    // localStorage.clear(); 
+  }
+
+
   setBookInfo(book) {
+    this.targetBook = book;
     this.bookInfoHeader.innerHTML = ``;
     this.bookInfoProps.innerHTML = ``;
+    addToReadButton.style.display = "block";
     // this.bookInfoProps.innerHTML += book.title ? `<h2 class="book-info__title">${book.title}</h2>` : ``; // var 3
     // book.title && (this.bookInfoProps.innerHTML += `<h3 class="book-info__title">${book.title}</h3>`);   // var 2
     this.bookInfoHeader.innerHTML += `<h2 class="book-info__title">${book.title}</h2>`;                     // var 1
@@ -52,7 +91,7 @@ export class BookInfo {
     })
     .catch ((error) => console.log(error));
   }
-
+//#region getFlagsHTML
   getFlagHTML(item) {
     // console.log(item);
     if (item == 'eng') item = 'gb';
@@ -102,4 +141,5 @@ export class BookInfo {
     if (item.length === 3) return ``;
     return `<img class="book-info__flag" src="https://flagcdn.com/16x12/${item}.png"></img> `;
   }
+  //#endregion getFlagsHTML
 }

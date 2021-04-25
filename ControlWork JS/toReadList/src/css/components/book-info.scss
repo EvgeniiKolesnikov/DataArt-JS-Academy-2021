@@ -39,6 +39,7 @@
     margin: 0 auto;
     font-weight: 400;
     font-size: 14px;
+    text-align: center;
     color: #8a8a8a;
   }
 }
@@ -113,4 +114,26 @@
 
 .book-info__flag {
   margin-right: 0px;
+}
+
+.book-info__addButton {
+  width: 150px;
+  height: 25px;
+  -webkit-transition-duration: .2s;
+  transition-duration: .2s;
+  background: $blue;
+  color: #FFF;
+  border-radius: 5px; 
+  text-shadow: none;
+  border: none;
+  margin: 10px auto;
+  display: none;
+  position: sticky;
+  bottom: 10px;
+  &:hover {
+    background-color: #258ace;
+  }
+  &:active {
+    background-color: #176da7;
+  }
 }

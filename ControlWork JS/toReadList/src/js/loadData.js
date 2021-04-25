@@ -38,7 +38,7 @@ export class LoadData {
       this.pageLoaded = true;
       spinnerBig.style.display = "none";
       spinnerMini.style.display = 'none';
-      // console.log(page);
+      console.log(this.currentPage);
     });
   }
   

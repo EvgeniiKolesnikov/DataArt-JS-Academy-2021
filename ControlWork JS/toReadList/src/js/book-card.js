@@ -5,9 +5,10 @@ export class BookCard {
   constructor() {
     console.log('BookCard');
     this.currentPage = [];
-    this.bookInfo = new BookInfo(); // тоже самое, что и перед конструктором без this
+    this.bookInfo = new BookInfo();
     // const booksList = document.querySelector("#booksList");
-    booksList.addEventListener("click", e => this.onClickBookCard(e, this.currentPage));
+    booksList.addEventListener("click", e => 
+    this.onClickBookCard(e, this.currentPage));
   }
 
   setCurrentPage(currentPage) {
@@ -19,6 +20,7 @@ export class BookCard {
     const targetDiv = e.target;
     const id = targetDiv.id;
     const selectBook = currentPage.find(item => item.id === id);
+    // console.log(selectBook);
     if (!selectBook) {
       return;
     }

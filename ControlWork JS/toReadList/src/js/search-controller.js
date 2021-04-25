@@ -1,15 +1,14 @@
 'use strict';
-import { LoadData } from "./loadData";
 
 export class SearchController {
   constructor(loadData) {
     console.log('SearchController');
-    // console.log(loadData);
     this.loadData = loadData;
     // const booksList =     document.querySelector("#booksList");
     // const searchInput =   document.querySelector("#searchInput");
     // const searchClear =   document.querySelector("#searchClear");
     // const searchButton =  document.querySelector("#searchButton");
+    // const addToReadButton = document.getElementById("addToReadButton");
     const debounce = (callback, delay = 250) => {
       let timeoutId
       return (...args) => {
@@ -29,12 +28,12 @@ export class SearchController {
       let value = e.path[0].value;
       searchClear.style.display = (value == "" || undefined) ? 'none' : 'block';
       if(e.code === 'Enter') {
-        console.log(this.loadData);
-        console.log(e.code);
+        // console.log(this.loadData);
+        // console.log(e.code);
         this.loadData.getData(searchInput.value, 1);
       }
       if(e.code === 'Backspace' && value == "") {
-        console.log(e.code);
+        // console.log(e.code);
         this.onClearBooksList();
       }
     });
@@ -50,8 +49,12 @@ export class SearchController {
     e.currentTarget.style.display = 'none';
     this.onClearBooksList();
   }
+
   onClearBooksList() {
+    addToReadButton.style.display = 'none';
     booksList.innerHTML = ``;
+    bookInfoHeader.innerHTML = ``;
+    bookInfoProps.innerHTML = ``;
     booksShown.innerHTML = `Shown books: 0`;
     booksFound.innerHTML = `Found books: 0`;
   }
