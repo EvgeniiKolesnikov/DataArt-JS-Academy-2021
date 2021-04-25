@@ -1,5 +1,9 @@
 'use strict';
+
+import { Api } from "./api";
+
 export class BookInfo {
+  api = new Api();
   constructor() {
     this.bookInfoHeader = document.getElementById("bookInfoHeader");
     this.bookInfoProps = document.getElementById("bookInfoProps");
@@ -37,24 +41,36 @@ export class BookInfo {
     }
   }
 
-  async loadBookImage(book) {
-    try {
-      let url = `http://covers.openlibrary.org/b/isbn/${book.isbn[0]}-L.jpg?default=false`;
-      let response = await fetch(`${url}`, {mode: 'cors'});
-      if (response.ok) {
-        let content = await response.blob();
-        let objectURL = URL.createObjectURL(content);
-        let bookPicture = document.getElementById('bookPicture');
-        if (bookPicture.src === '') {
-          bookPicture.src = objectURL;
-        }
-      } else {
-        console.error(`HTTP status: error ${response.status}`);
+  loadBookImage(book) {
+    
+    this.api.searchBookImage(book.isbn[0]).then(blob => {
+      let objectURL = window.URL.createObjectURL(blob);
+      let bookPicture = document.getElementById('bookPicture');
+      if (bookPicture.src === '') {
+        bookPicture.src = objectURL;
       }
-    } catch (error) {
-      console.log(error);
-    }
+    })
+    .catch ((error) => console.log(error));
   }
+
+  // async loadBookImage(book) {
+  //   try {
+  //     let url = `http://covers.openlibrary.org/b/isbn/${book.isbn[0]}-L.jpg?default=false`;
+  //     let response = await fetch(`${url}`, {mode: 'cors'});
+  //     if (response.ok) {
+  //       let content = await response.blob();
+  //       let objectURL = URL.createObjectURL(content);
+  //       let bookPicture = document.getElementById('bookPicture');
+  //       if (bookPicture.src === '') {
+  //         bookPicture.src = objectURL;
+  //       }
+  //     } else {
+  //       console.error(`HTTP status: error ${response.status}`);
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
 
   getFlagHTML(item) {
     // console.log(item);
