@@ -8,7 +8,6 @@ export class SearchController {
     // const searchInput =   document.querySelector("#searchInput");
     // const searchClear =   document.querySelector("#searchClear");
     // const searchButton =  document.querySelector("#searchButton");
-    // const addToReadButton = document.getElementById("addToReadButton");
     const debounce = (callback, delay = 250) => {
       let timeoutId
       return (...args) => {

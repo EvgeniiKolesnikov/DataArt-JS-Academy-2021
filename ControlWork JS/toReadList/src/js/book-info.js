@@ -43,7 +43,8 @@ export class BookInfo {
 
     this.pushMessage(bookAdded, message);
     this.storage.set("myBooks", myBooks);
-    this.storage.show("myBooks");
+    // this.storage.show("myBooks");
+    this.storage.refresh();
   }
 
   pushMessage(bookAdded, message) {

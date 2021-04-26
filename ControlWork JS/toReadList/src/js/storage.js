@@ -6,9 +6,14 @@ export class Storage {
   constructor() {
     console.log('Storage');
     this.readList = new ReadList();
+    this.refresh();
+  }
+
+  refresh() {
     this.readList.loadReadList(this);
   }
 
+  
   get(name) {
     // name = "myBooks", "myTheme"
     return JSON.parse(localStorage.getItem(name))

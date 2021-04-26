@@ -6,6 +6,7 @@ export class ReadList {
   ReadCount = 0;
   constructor() {
     console.log('ReadList');
+    console.log('CALLLLLLLLL');
     this.readListBookCount = document.getElementById("readListBookCount");
     this.readListReadCount = document.getElementById("readListReadCount");
     this.readList = document.getElementById("readList");
@@ -25,7 +26,9 @@ export class ReadList {
   }
 
   setListBookHTML(myBooks) {
-    this.readListBook.innerHTML += myBooks.filter(item => item.read == false).map(item => 
+    this.readListBook.innerHTML = myBooks
+    .filter(item => item.read == false)
+    .map(item => 
       `<div data-book-id="${item.id}" class="book-card book-card--read-list">
         <div class="book-card__container">
           <span class="book-card__title">${item.title}</span> 
@@ -42,14 +45,16 @@ export class ReadList {
   }
 
   setListReadHTML(myBooks) {
-    this.readListRead.innerHTML += myBooks.filter(item => item.read == true).map(item => 
+    this.readListRead.innerHTML = myBooks
+    .filter(item => item.read == true)
+    .map(item => 
       `<div data-book-id="${item.id}" class="book-card book-card--read">
         <div class="book-card__container">
           <span class="book-card__title">${item.title}</span> 
           ${item.language ? `<span class="book-card__lang">${item.language.join(", ")}</span>` : ``}
           ${item.author ? `<div class="book-card__author">${item.author.join(", ")}</div>` : ``}
           <div class="book-card__buttons">
-            <button class="book-card__button" id="unmarkAsReadButton">Mark as read</button>
+            <button class="book-card__button" id="unmarkAsReadButton">unMark as read</button>
             <button class="book-card__button" id="removefromListButton">Remove from list</button>
           </div>
         </div> 
