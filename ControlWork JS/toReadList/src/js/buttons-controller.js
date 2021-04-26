@@ -54,21 +54,14 @@ export class ButtonsController {
     this.storage.set("myBooks", myBooks);
     console.log(myBooks);
   }
-  unonChangeReadList(bookId) {
-    const myBooks = this.storage.get("myBooks");
-    myBooks.forEach(item => {
-      if (item.id == bookId) {
-        item.read = true;
-        console.log(item.id);
-      }
-    });
-    this.storage.set("myBooks", myBooks);
-  }
-  removeBook(bookId) {
 
-  }
   showBook(bookId) {
-
+    const myBooks = this.storage.get("myBooks");
+    const targetBook = myBooks.filter(item => item.id == bookId);
+    if (!targetBook) {
+      return;
+    }
+    // this.bookInfo.setBookInfo(selectBook);
   }
 }
 

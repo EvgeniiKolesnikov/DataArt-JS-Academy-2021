@@ -27,6 +27,10 @@ export class ReadList {
 
   setListBookHTML(myBooks) {
     this.readListBook.innerHTML = myBooks
+    .sort((prev, next) => {
+      if ( prev.title < next.title ) return -1;
+      if ( prev.title < next.title ) return 1;
+    })
     .filter(item => item.read == false)
     .map(item => 
       `<div data-book-id="${item.id}" class="book-card book-card--read-list">
@@ -46,6 +50,10 @@ export class ReadList {
 
   setListReadHTML(myBooks) {
     this.readListRead.innerHTML = myBooks
+    .sort((prev, next) => {
+      if ( prev.title < next.title ) return -1;
+      if ( prev.title < next.title ) return 1;
+    })
     .filter(item => item.read == true)
     .map(item => 
       `<div data-book-id="${item.id}" class="book-card book-card--read">
