@@ -13,7 +13,7 @@ export class Storage {
     this.readList.loadReadList(this);
   }
 
-  
+
   get(name) {
     // name = "myBooks", "myTheme"
     return JSON.parse(localStorage.getItem(name))
@@ -23,6 +23,7 @@ export class Storage {
     // "myBooks" = [{},{},{}]
     // "myTheme" = "dark"
     localStorage.setItem(name, JSON.stringify(value)); 
+    this.refresh();
   }
 
   clear() {
