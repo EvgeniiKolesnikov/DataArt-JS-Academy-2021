@@ -4,14 +4,9 @@ import { ReadList } from "./read-list";
 
 export class Storage {
   constructor() {
-    // const readList = new ReadList();
     console.log('Storage');
-    // this.readList = new readList();
-    this.loadReadList();
-  }
-
-  loadReadList() {
-
+    this.readList = new ReadList();
+    this.readList.loadReadList(this);
   }
 
   get(name) {
@@ -20,7 +15,7 @@ export class Storage {
   }
 
   set(name, value) { 
-    // "myBooks" = {[0,1,2]} 
+    // "myBooks" = [{},{},{}]
     // "myTheme" = "dark"
     localStorage.setItem(name, JSON.stringify(value)); 
   }

@@ -3,14 +3,14 @@ import { Api } from "./api";
 import { BookCard } from "./book-card";
 import { BooksList } from "./books-list";
 
-export class LoadData {
+export class Data {
   api = new Api();
   loadedPage = 0;
   countPages = 0;
   pageLoaded = false;
   currentPage = [];
   constructor() {
-    console.log('LoadData');
+    console.log('Data');
     this.bookList = new BooksList();
     this.bookCard = new BookCard();
     this.querry = '';

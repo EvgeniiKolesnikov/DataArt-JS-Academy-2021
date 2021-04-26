@@ -3,10 +3,10 @@
 export class ScrollController {
   canAddData = true;
   isLoadedNewData = false;
-  constructor(loadData) {
+  constructor(data) {
     console.log('ScrollController');
-    // console.log(loadData);
-    this.loadData = loadData;
+    // console.log(data);
+    this.data = data;
     const scrollBooksList = document.querySelector('#scrollBooksList');
     const spinnerMini = document.querySelector('#spinnerMini');
     scrollBooksList.addEventListener("scroll", (e) => {
@@ -20,8 +20,8 @@ export class ScrollController {
     let scrollHeigh = scroll.scrollHeight;
     if (docViewBottom + 100 >= scrollHeigh) {
       // scroll in target bottom
-      if (this.canAddData && this.loadData.pageLoaded) {
-        this.loadData.addData();
+      if (this.canAddData && this.data.pageLoaded) {
+        this.data.addData();
       } 
     }
   }

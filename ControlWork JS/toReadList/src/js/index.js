@@ -1,16 +1,19 @@
 'use strict';
-import { LoadData } from "./loadData";
+import { ButtonsController } from "./buttons-controller";
+import { Data } from "./data";
 import { ReadList } from "./read-list";
 import { ScrollController } from "./scroll-controller";
 import { SearchController } from "./search-controller";
 import { Storage } from "./storage";
 import { ToggleTheme } from "./toggle-theme";
 
-let loadData = new LoadData();
+let data = new Data();
 let storage = new Storage();
 
-new SearchController(loadData);
-new ScrollController(loadData);
+new SearchController(data);
+new ScrollController(data);
+
 new ToggleTheme(storage);
-new ReadList(storage);
+// new ReadList(storage);
+new ButtonsController(storage);
 

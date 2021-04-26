@@ -4,26 +4,24 @@ export class ReadList {
   books = [];
   BookCount = 0;
   ReadCount = 0;
-  constructor(storage) {
+  constructor() {
     console.log('ReadList');
-    this.storage = storage;
     this.readListBookCount = document.getElementById("readListBookCount");
     this.readListReadCount = document.getElementById("readListReadCount");
     this.readList = document.getElementById("readList");
     this.readListBook = document.getElementById("readListBook");
     this.readListRead = document.getElementById("readListRead");
-
-    this.loadReadList();
   }
 
-  loadReadList() {
-    const myBooks = this.storage.get("myBooks");
+  loadReadList(storage) {
+    // const myBooks = this.storage.get("myBooks");
+    const myBooks = storage.get("myBooks");
     if (myBooks) { 
       this.setListBookHTML(myBooks);
       this.setListReadHTML(myBooks);
       this.setListAboutHTML(myBooks)
     } 
-    this.storage.show("myBooks");
+    storage.show("myBooks");
   }
 
   setListBookHTML(myBooks) {
