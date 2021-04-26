@@ -29,16 +29,17 @@ body {
   background-color: var(--bg-color);
 }
 
-// ::-webkit-scrollbar {
-//   width: 5px;
-//   background: transparent;
-// }
-// ::-webkit-scrollbar-thumb {
-//   background: #34B2FF;
-// }
-// ::-webkit-scrollbar-track {
-//   background: rgba($color: #074ece, $alpha: 0.0);
-// }
+::-webkit-scrollbar {
+  width: 5px;
+  height:  5px;
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #34B2FF;
+}
+::-webkit-scrollbar-track {
+  background: rgba($color: #074ece, $alpha: 0.0);
+}
 
 li {
   list-style-type: none;

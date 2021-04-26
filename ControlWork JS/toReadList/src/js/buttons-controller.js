@@ -1,7 +1,7 @@
 'use strict';
 
 export class ButtonsController {
-  id;
+  bookId;
 
   constructor(storage) {
     console.log('ButtonsController');
@@ -21,33 +21,46 @@ export class ButtonsController {
 
   trackElement(e) {
     let item = e.target;
-    let id;
-    // console.log(e);
+    let bookId;
 
     if (item.tagName == 'BUTTON') {
-      console.log('click button');
-      id = item.parentNode.parentNode.parentNode.dataset.bookId;
+      // console.log('click button');
+      bookId = item.parentNode.parentNode.parentNode.dataset.bookId;
 
       if (item.id == 'markAsReadButton') {
-        console.log(item.id);
-        
+        // console.log(item.id);
+        this.markBook(bookId);
       }
       if (item.id == 'unmarkAsReadButton') {
-        console.log(item.id);
-
+        // console.log(item.id);
+        this.unmarkBook(bookId);
       }
       if (item.id == 'removefromListButton') {
-        console.log(item.id);
-
+        // console.log(item.id);
+        this.removeBook(bookId);
       }
     } 
     
     if (item.tagName == 'DIV') {
-      console.log('click book');
-      id = item.dataset.bookId;
+      // console.log('click book');
+      bookId = item.dataset.bookId;
+      this.showBook(bookId);
     }
 
-    console.log(id);
+    this.bookId = bookId;
+    console.log(bookId);
+  }
+
+  markBook(bookId) {
+    
+  }
+  unmarkBook(bookId) {
+
+  }
+  removeBook(bookId) {
+
+  }
+  showBook(bookId) {
 
   }
 }
