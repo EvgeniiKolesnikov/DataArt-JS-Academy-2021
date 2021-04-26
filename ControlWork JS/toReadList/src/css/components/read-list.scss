@@ -1,4 +1,77 @@
-.read-list__header {
-  height: 51px;
-  background-color: lightblue;
+.read-list {
+  &__header {
+    margin: 0px 0px;
+    padding: 5px 0 0 0;
+    height: 51px;
+    width: auto;
+    text-align: center;
+    border-bottom: 1px solid gainsboro;
+  }
+  &__title {
+    margin: 0 0px;
+    padding: 0 0 0 0;
+    height: auto;
+    width: auto;
+    font-size: 20px;
+  }
+  &__about {
+    margin: 0px 0px;
+    padding: 0 0 0 0;
+    height: auto;
+    width: auto;
+    font-size: 14px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    gap: 7px
+  }
+  &__item {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    height: auto;
+    width: auto;
+    font-size: 12px;
+  }
+}
+
+.read-list__container {
+  margin: 0px -10px 0 0;
+  padding: 0 0 0 0;
+  height: auto;
+  width: auto;
+}
+
+.read-list  {
+  &__books {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    height: auto;
+    width: auto;
+    &-item {
+      margin: 0 0 0 0;
+      padding: 0 0 0 0;
+      height: auto;
+      width: auto;
+    }
+  }
+}
+
+.read-list  {
+  margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    height: auto;
+    width: auto;
+  &__read {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    height: auto;
+    width: auto;
+    &-item {
+      margin: 0 0 0 0;
+      padding: 0 0 0 0;
+      height: auto;
+      width: auto;
+    }
+  }
 }
