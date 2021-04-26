@@ -1,13 +1,11 @@
 'use strict';
 
 export class ToggleTheme {
-  toggleButton;
   theme;
   constructor(storage) {    
     console.log('ToggleTheme');
     this.storage = storage;
-    this.toggleButton = document.querySelector("#toggleThemeButton");
-    this.toggleButton.addEventListener('click', e => this.toggleTheme());
+    toggleThemeButton.addEventListener('click', e => this.toggleTheme());
     // localStorage.removeItem("myTheme");
     this.loadTheme();
   }
@@ -21,12 +19,9 @@ export class ToggleTheme {
       this.theme = 'dark';
       document.documentElement.setAttribute('theme', 'dark');
     }
-    // console.log(`myTheme = ${myTheme}`);
-    // console.log(`this.theme = ${this.theme}`);
   }
 
   toggleTheme() {
-    // console.log("Switching theme");
     // console.log(this.toggleButton.children[0].src);
     if (document.documentElement.hasAttribute('theme')) {
       document.documentElement.removeAttribute('theme');
