@@ -7,42 +7,33 @@ export class BookInfo {
   targetBook = [];
   api = new Api();
   storage = new Storage();
+
   constructor() {
     console.log('BookInfo');
     this.bookInfoHeader = document.getElementById("bookInfoHeader");
     this.bookInfoProps = document.getElementById("bookInfoProps");
-    this.addToReadButton = document.getElementById("addToReadButton");
+    const addToReadButton = document.getElementById("addToReadButton");
     addToReadButton.addEventListener("click", e => this.addToReadList());
   }
 
   addToReadList() {
-    // console.log(this.targetBook);
-    let myBooks = [];
     this.targetBook.read = false;
+    const myBooks = this.storage.get("myBooks");
 
-    let returnMyBooks = JSON.parse(localStorage.getItem("myBooks"))
-    if (returnMyBooks) {
-      // console.log('yes MyBook DB');
-      myBooks = returnMyBooks.slice();
-      let checkBookInStorage = returnMyBooks.filter(item => 
-        item.id == this.targetBook.id).length > 0;
-      console.log("book in storage? " + checkBookInStorage);
+    if (myBooks) {
+      let checkBookInStorage = myBooks
+      .filter(item => item.id == this.targetBook.id).length > 0;
+      
+      console.log(`book "${this.targetBook.title}" in storage? = ` + checkBookInStorage);
       if (!checkBookInStorage) {
-        // console.log('push book in storage');
         myBooks.push(this.targetBook);
-        // console.log(myBooks);
       }
-    } else {
-      // console.log('no MyBook DB');
+    } else if (!myBooks) {
       myBooks.push(this.targetBook);
     }
 
-    // console.log(returnMyBooks);
-    // console.log(myBooks);
-
-    let serialMyBooks = JSON.stringify(myBooks); //сериализуем его
-    // console.log(serialMyBooks);
-    localStorage.setItem("myBooks", serialMyBooks); 
+    this.storage.set("myBooks", myBooks);
+    this.storage.show("myBooks");
   }
 
 

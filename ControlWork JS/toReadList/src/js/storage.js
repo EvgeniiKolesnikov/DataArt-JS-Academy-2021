@@ -3,10 +3,13 @@
 export class Storage {
   constructor() {
     console.log('Storage');
-
+    // this.readList = new readList();
+    this.loadReadList();
   }
 
+  loadReadList() {
 
+  }
 
   get(name) {
     // name = "myBooks", "myTheme"
@@ -25,6 +28,7 @@ export class Storage {
   }
 
   show(name) {
-    console.log(`${name} = ${this.get(name)}`);
+    console.log(`${name} = `, this.get(name));
   }
+  
 }
