@@ -17,26 +17,43 @@ export class BookInfo {
   }
 
   addToReadList() {
+    let message = '';
+    let bookAdded = false;
     this.targetBook.read = false;
-    const myBooks = this.storage.get("myBooks");
 
+    const myBooks = this.storage.get("myBooks");
     if (myBooks) {
       let checkBookInStorage = myBooks
       .filter(item => item.id == this.targetBook.id).length > 0;
       
-      console.log(`book "${this.targetBook.title}" in storage? = ` + checkBookInStorage);
-      if (!checkBookInStorage) {
+      // console.log(`book "${this.targetBook.title}" in storage? = ` + checkBookInStorage);
+      if (checkBookInStorage) {
+        bookAdded = false;
+        message = "The book is already in Read List";
+      } else  {
         myBooks.push(this.targetBook);
-      }
+        bookAdded = true;
+        message = "The book was added in Read List";
+      } 
     } else if (!myBooks) {
       myBooks.push(this.targetBook);
+      bookAdded = true;
     }
 
+    this.pushMessage(bookAdded, message);
     this.storage.set("myBooks", myBooks);
     this.storage.show("myBooks");
   }
 
-
+  pushMessage(bookAdded, message) {
+    const AddToReadMessage = document.createElement('div');
+    AddToReadMessage.classList.add('message');
+    AddToReadMessage.textContent = message;
+    AddToReadMessage.style.backgroundColor = bookAdded ? '#c6fdcd' : '#fdc6c6';
+    addToReadButton.appendChild(AddToReadMessage);  
+    setTimeout(function(){AddToReadMessage.remove()}, 2000);
+  }
+  
   setBookInfo(book) {
     this.targetBook = book;
     this.bookInfoHeader.innerHTML = ``;
