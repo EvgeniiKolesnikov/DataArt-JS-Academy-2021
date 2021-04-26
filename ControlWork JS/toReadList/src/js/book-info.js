@@ -29,15 +29,16 @@ export class BookInfo {
       // console.log(`book "${this.targetBook.title}" in storage? = ` + checkBookInStorage);
       if (checkBookInStorage) {
         bookAdded = false;
-        message = "The book is already in Read List";
+        message = "This book is already in Read List";
       } else  {
         myBooks.push(this.targetBook);
         bookAdded = true;
-        message = "The book was added in Read List";
+        message = "This book was added in Read List";
       } 
     } else if (!myBooks) {
       myBooks.push(this.targetBook);
       bookAdded = true;
+      message = "This book was added in Read List";
     }
 
     this.pushMessage(bookAdded, message);
@@ -53,7 +54,7 @@ export class BookInfo {
     addToReadButton.appendChild(AddToReadMessage);  
     setTimeout(function(){AddToReadMessage.remove()}, 2000);
   }
-  
+
   setBookInfo(book) {
     this.targetBook = book;
     this.bookInfoHeader.innerHTML = ``;
