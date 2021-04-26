@@ -6,7 +6,7 @@ export class BookCard {
     console.log('BookCard');
     this.currentPage = [];
     this.bookInfo = new BookInfo();
-    // const booksList = document.querySelector("#booksList");
+    const booksList = document.querySelector("#booksList");
     booksList.addEventListener("click", e => 
     this.onClickBookCard(e, this.currentPage));
   }

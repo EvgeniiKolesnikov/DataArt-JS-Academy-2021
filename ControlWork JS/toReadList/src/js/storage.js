@@ -1,7 +1,10 @@
 'use strict';
 
+import { ReadList } from "./read-list";
+
 export class Storage {
   constructor() {
+    // const readList = new ReadList();
     console.log('Storage');
     // this.readList = new readList();
     this.loadReadList();
@@ -30,5 +33,5 @@ export class Storage {
   show(name) {
     console.log(`${name} = `, this.get(name));
   }
-  
+
 }
