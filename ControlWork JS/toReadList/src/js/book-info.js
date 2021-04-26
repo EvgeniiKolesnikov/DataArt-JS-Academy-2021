@@ -1,10 +1,12 @@
 'use strict';
 
 import { Api } from "./api";
+import { Storage } from "./storage";
 
 export class BookInfo {
   targetBook = [];
   api = new Api();
+  storage = new Storage();
   constructor() {
     console.log('BookInfo');
     this.bookInfoHeader = document.getElementById("bookInfoHeader");
@@ -41,9 +43,6 @@ export class BookInfo {
     let serialMyBooks = JSON.stringify(myBooks); //сериализуем его
     // console.log(serialMyBooks);
     localStorage.setItem("myBooks", serialMyBooks); 
-    
-    //очищаем все хранилище
-    // localStorage.clear(); 
   }
 
 
