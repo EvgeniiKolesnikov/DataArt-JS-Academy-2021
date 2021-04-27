@@ -1,0 +1,20 @@
+#onSearchListBtn {
+  display:none;
+  @media (max-width: 490px) {
+    display:block;
+  }
+}
+
+#onInfoListBtn {
+  display:none;
+  @media (max-width: 780px) {
+    display:block;
+  }
+}
+
+#onReadListBtn {
+  display:none;
+  @media (max-width: 780px) {
+    display:block;
+  }
+}

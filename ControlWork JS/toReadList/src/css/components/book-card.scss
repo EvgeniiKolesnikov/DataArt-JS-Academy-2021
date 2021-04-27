@@ -11,16 +11,15 @@
   align-content: flex-start;
   gap: 0px;
   cursor: pointer;
-  // border-bottom: 1px solid #e8e7e7;
   &:hover {
-    background-color: #eeeeee;
+    background-color: var(--book-card--hover);
     border-radius: 2px;
   }
   &--active {
-    background-color: #dadada;
+    background-color: var(--book-card--active);
     border-radius: 4px;
     &:hover {
-      background-color: #dadada;
+      background-color: var(--book-card--active);
       border-radius: 2px;
     }
   }
@@ -29,15 +28,15 @@
     padding: 5px 10px;
     border-radius: 0px;
     /* cursor: auto; */
-    background-color: #faf6e0;
-    border-bottom: 2px solid #e8e8e8;
+    background-color: var(--book-card--read-list);
+    border-bottom: 2px solid var(--book-card--read-list-b);
   }
   &--read {
     padding: 5px 10px;
     border-radius: 0px;
     /* cursor: auto; */
-    background-color: #e5ffdb;
-    border-bottom: 2px solid #e8e8e8;
+    background-color: var(--book-card--read);
+    border-bottom: 2px solid var(--mt);
   }
 }
 
@@ -53,20 +52,21 @@
   pointer-events: none;
   // new
   font-size: 14px;
+  color: var(--book-card__title);
 }
 .book-card__subtitle {
   padding: 0px 0px 0px 0px;
   margin: 0px 0px 0px 0px;
   pointer-events: none;
   font-size: 13px;  
-  color: #919191;
+  color: var(--book-card__subtitle);
 }
 .book-card__lang {
   padding: 0px 0px 0px 0px;
   margin: 0px 0px 0px 0px;
   pointer-events: none;
   font-size: 11px;  
-  color: #a9a9a9;
+  color: var(--book-card__lang);
 }
 
 

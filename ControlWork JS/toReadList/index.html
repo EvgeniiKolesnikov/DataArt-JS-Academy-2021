@@ -21,10 +21,13 @@
       <div class="header__container">
         <h1 class="header__title">Books</h1>
         <div class="header__menu">
-          <button class="header__menu-item" id="">
+          <button class="header__menu-item" id="onSearchListBtn">
             <img class="header__menu-img" src="./src/img/search.png" title="Open Search Menu" alt="searchIcon">
           </button>
-          <button class="header__menu-item" id="">
+          <button class="header__menu-item" id="onInfoListBtn">
+            <img class="header__menu-img" src="./src/img/info.png" title="Open Search Menu" alt="searchIcon">
+          </button>
+          <button class="header__menu-item" id="onReadListBtn">
             <img class="header__menu-img" src="./src/img/doc.png" alt="readListIcon" title="Open Read List">
           </button>
           <button class="header__menu-item" value="Light/Dark" id="toggleThemeButton">
@@ -38,7 +41,7 @@
       <div class="book-shelf">
 
         <!-- list -->
-        <section class="books-list left-block">
+        <section class="books-list left-block" id="leftBlock">
           <div class="input input--books-list">
             <div class="input__box">
               <input class="input__control" id="searchInput" placeholder="Search books" type="text" name="search"
@@ -71,14 +74,14 @@
         </section>
 
         <!-- info -->
-        <section class="book-info center-block">
+        <section class="book-info center-block" id="centerBlock">
           <div class="book-info__header" id="bookInfoHeader"></div>
           <div class="book-info__props" id="bookInfoProps"></div>
           <button class="book-info__addButton" id="addToReadButton">Add book to Read List</button>
         </section>
 
         <!-- read -->
-        <section class="read-list right-block">
+        <section class="read-list right-block" id="rightBlock">
           <div class="read-list__header">
             <div class="read-list__title">To read list...</div>
             <div class="read-list__about">

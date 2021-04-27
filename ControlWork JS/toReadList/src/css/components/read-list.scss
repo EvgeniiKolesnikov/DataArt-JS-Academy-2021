@@ -5,8 +5,9 @@
     height: 51px;
     width: auto;
     text-align: center;
-    border-bottom: 1px solid gainsboro;
+    border-bottom: 1px solid var(--mt);;
     background-color: #ece2a7;
+    background-color: var(--read-list__header);
   }
   &__title {
     margin: 0 0px;

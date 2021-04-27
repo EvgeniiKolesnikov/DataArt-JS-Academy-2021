@@ -10,62 +10,89 @@ $lightBlack7: #777777;
 
 // Light theme colors
 :root {
-  --bg-color: #fafafa;
-  --bg-color1: #ffffff;
-  --bg-color2: #f9f9f9;
-  --bg-color3:#f1f1f1;
-  --bg-header: #202020;
-  --bg-header2: #121212;
-  --header-text: #525252;
-  --header-border:#ccc;
-  --header-border-focus:#1c62b9;
+  --blue: #2f9ee7;
+  --orange:#ffb400;
+  --input:#ffffff;
+  --input__box:#f1f1f1;
+  --input__control:#888888;
+  --input__control_color: #9c9c9c;
 
-  --bg-header-input:#121212;
-  --bg-header-text:#888888;
-  --bg-header-item:#606060;
-  --bg-header-find:#f8f8f8;
-  --bg-header-ico:##818181;
+  --scroll:#b6b6b6;
 
-  --title: #606060;
-  --title2:#303030;
-  --subtitle: #aaaaaa;
+  --button-bg: #2f9ee7;
+  --button-border: #2f9ee7;
+  --button-hover: #258ace;
+  --button-active: #176da7;
+  --button-text: #fff;
 
-  --text-active: #030303;
+  --mt: #dcdcdc;
+  --book-card__title:#303030;
+  --book-card__lang:#a9a9a9;
+  --book-card__subtitle: #919191;
 
-  --text-bg: #e6e6e6;
-  --item-bg:#e5e5e5;
+  --spinner-mini: #ffffff;
 
-  --scroll:#909090;
+  --book-info__header: #ffffff;
+  --header:#333;
+  --header-title:#ababab;
+  --book-info__title:#333;
+
+  --body: #fafafa;
+  --read-list__header:#ece2a7;
+  --book-card--read-list:#faf6e0;
+  --book-card--read-list-b:#e8e8e8;
+  --book-card--read:#e5ffdb;
+
+  --book-card--active:#dadada;
+  --book-card--hover:#eeeeee;
+
+  --bg-col:#ffffff;
 }
 
 // Dark theme colors
 :root[theme='dark'] {
-  --bg-color: rgb(49, 49, 49);
-  --bg-color1: #202020;
-  --bg-color2: #181818;
-  --bg-color3:#0f0f0f;
-  --bg-header: #202020;
-  --bg-header2: #121212;
-  --header-text: #525252;
-  --header-border:#ccc;
-  --header-border-focus:#1c62b9;
-  
+  --blue:#17567f;
+  --orange:#ffb400;
+  --input:#202020;
+  --input__box:#0f0f0f;
+  --input__control:#202020;
+  --input__control_color: #9c9c9c;
+
   --bg-header-input:#121212;
   --bg-header-text:#828282;
   --bg-header-item:#ffffff;
   --bg-header-find:#323232;
   --bg-header-ico:#6f6f6f;
 
-  --title: #fdfdfd;
-  --title2:#949494;
-  --subtitle: #aaaaaa;
-
-  --text-active: #030303;
-
-  --text-bg: #e6e6e6;
-  --item-bg:#272727;
-
   --scroll:#909090;
 
-  // --nav-bg-color: var(--main-hue);
+  --button-bg: #18242c;
+  --button-border: #17567f;
+  --button-hover: #1e4e6e;
+  --button-active: #10293b;
+  --button-text: #fff;
+  
+  --mt: #5e5e5e;
+  --book-card__title:#949494;
+  --book-card__lang:#545454;
+  --book-card__subtitle: #616161;
+
+  --spinner-mini: #181818;
+
+  --book-info__header: #1d1d1d;
+  --header:#202020;
+  --header-title:#ababab;
+
+  --book-info__title:#858585;
+  --body: #181818;
+  --read-list__header:#4d4834;
+  --book-card--read-list:#27251b;
+
+  --book-card--read-list-b:#464646;
+  --book-card--read:#1f2d1a;
+
+  --book-card--active:#0c0c0c;
+  --book-card--hover:#333333;
+
+  --bg-col:#181818;
 }

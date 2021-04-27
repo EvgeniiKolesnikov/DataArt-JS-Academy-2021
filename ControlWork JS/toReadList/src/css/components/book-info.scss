@@ -21,8 +21,8 @@
     width: 100%;
     z-index: -1;
     pointer-events: none;
-    background: linear-gradient(to top, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 1) 80%);
-    background: linear-gradient(to top, rgba(255, 255, 255, 0) 50%, white 70%);
+
+    background: linear-gradient(to top, rgba(255, 255, 255, 0) 50%, var(--book-info__header) 70%);
   }
   }
   &__title {
@@ -32,7 +32,7 @@
     overflow: hidden;
     font-weight: 400;
     font-size: 20px;
-    color: #333;
+    color: var(--book-info__title);
   }
   &__subtitle {
     padding: 0px 0px 10px 0px;
@@ -121,8 +121,6 @@
   height: 25px;
   -webkit-transition-duration: .2s;
   transition-duration: .2s;
-  background: $blue;
-  color: #FFF;
   border-radius: 5px; 
   text-shadow: none;
   border: none;
@@ -130,10 +128,16 @@
   display: none;
   position: sticky;
   bottom: 10px;
+  background: var(--button-bg);
+  color: #FFF;
+  border-radius: 5px;
+  text-shadow: none;
+  border: 1px solid var(--button-border);
+
   &:hover {
-    background-color: #258ace;
+    background-color: var(--button-hover);
   }
   &:active {
-    background-color: #176da7;
+    background-color: var(--button-active);
   }
 }

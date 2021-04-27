@@ -4,9 +4,11 @@
   gap: 10px;
   flex-direction: row;
   align-items: center;
+  background-color: var(--input);
+
   /* margin: 10px 10px 10px 10px; */
   // padding: 10px 10px 10px 10px;
-  border-bottom: 1px solid gainsboro;
+  border-bottom: 1px solid var(--mt);
   &::-ms-clear {
     width : 0;
     height: 0;
@@ -22,7 +24,7 @@
   /* width: 250px; */
   border: 1px solid rgba(0, 0, 0, .2);
   border-radius: 5px;
-  background-color: #fff;
+  background-color: var(--input__box);
   background-clip: padding-box;
   transition: box-shadow ease-in-out;
   display: flex;
@@ -32,7 +34,7 @@
   }
   &:focus-within {
     box-shadow: 0 0px 6px rgba(0, 0, 0, .08);
-    border: 1px solid $blue;
+    border: 1px solid var(--button-border); 
   }
   &::before {
     position: absolute;
@@ -42,6 +44,7 @@
     height: 20px;
     opacity: 0.2;
     margin: 0px 0px 2px 4px;
+    background-color: white;
     background-repeat: no-repeat;
     background-image: url(../svg/icon_search.svg);
     background-size: cover;
@@ -55,6 +58,7 @@
   border-radius: 30px;
   border: none;
   background-color: #00000000;
+  color:var(--input__control_color);
   outline: none;
   display: flex;
   flex: 100%;
@@ -87,15 +91,16 @@
   height: 30px;
   -webkit-transition-duration: .2s;
   transition-duration: .2s;
-  background: $blue;
-  color: #FFF;
+  background: var(--button-bg);
+  color: var(--button-text);
   border-radius: 5px; 
   text-shadow: none;
-  border: none;
+  border: 1px solid var(--button-border);
+  // border: none;
   &:hover {
-    background-color: #258ace;
+    background-color: var(--button-hover);
   }
   &:active {
-    background-color: #176da7;
+    background-color: var(--button-active);
   }
 }

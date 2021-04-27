@@ -26,7 +26,7 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
   overflow: overlay;
-  background-color: var(--bg-color);
+  background-color: var(--body);
 }
 
 ::-webkit-scrollbar {
@@ -35,7 +35,7 @@ body {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #34B2FF;
+  background: rgb(179, 179, 179);
 }
 ::-webkit-scrollbar-track {
   background: rgba($color: #074ece, $alpha: 0.0);
