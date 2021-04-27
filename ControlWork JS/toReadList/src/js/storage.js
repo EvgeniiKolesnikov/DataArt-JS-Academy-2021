@@ -5,6 +5,7 @@ import { ReadList } from "./read-list";
 export class Storage {
   constructor() {
     console.log('Storage');
+    // this.clear();
     this.readList = new ReadList();
     this.refresh();
   }

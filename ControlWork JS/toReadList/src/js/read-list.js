@@ -6,10 +6,8 @@ export class ReadList {
   ReadCount = 0;
   constructor() {
     console.log('ReadList');
-    console.log('CALLLLLLLLL');
     this.readListBookCount = document.getElementById("readListBookCount");
     this.readListReadCount = document.getElementById("readListReadCount");
-    this.readList = document.getElementById("readList");
     this.readListBook = document.getElementById("readListBook");
     this.readListRead = document.getElementById("readListRead");
   }

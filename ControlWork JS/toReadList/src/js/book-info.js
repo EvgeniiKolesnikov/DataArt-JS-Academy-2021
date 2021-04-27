@@ -1,32 +1,33 @@
 'use strict';
 
 import { Api } from "./api";
-import { Storage } from "./storage";
+
 
 export class BookInfo {
   targetBook = [];
   api = new Api();
-  storage = new Storage();
 
   constructor() {
     console.log('BookInfo');
     this.bookInfoHeader = document.getElementById("bookInfoHeader");
     this.bookInfoProps = document.getElementById("bookInfoProps");
-    const addToReadButton = document.getElementById("addToReadButton");
-    addToReadButton.addEventListener("click", e => this.addToReadList());
   }
 
-  addToReadList() {
+  addToReadList(storage) {
+    if(!storage) {
+      return;
+    }
     let message = '';
     let bookAdded = false;
     this.targetBook.read = false;
 
-    const myBooks = this.storage.get("myBooks");
+    let myBooks = storage.get("myBooks");
+    console.log(myBooks);
     if (myBooks) {
       let checkBookInStorage = myBooks
       .filter(item => item.id == this.targetBook.id).length > 0;
       
-      // console.log(`book "${this.targetBook.title}" in storage? = ` + checkBookInStorage);
+      console.log(`book "${this.targetBook.title}" in storage? = ` + checkBookInStorage);
       if (checkBookInStorage) {
         bookAdded = false;
         message = "This book is already in Read List";
@@ -36,15 +37,14 @@ export class BookInfo {
         message = "This book was added in Read List";
       } 
     } else if (!myBooks) {
+      myBooks = [];
       myBooks.push(this.targetBook);
       bookAdded = true;
       message = "This book was added in Read List";
     }
 
     this.pushMessage(bookAdded, message);
-    this.storage.set("myBooks", myBooks);
-    // this.storage.show("myBooks");
-    this.storage.refresh();
+    storage.set("myBooks", myBooks);
   }
 
   pushMessage(bookAdded, message) {

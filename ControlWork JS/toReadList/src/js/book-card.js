@@ -1,11 +1,10 @@
 'use strict';
-import { BookInfo } from "./book-info";
 
 export class BookCard {
-  constructor() {
+  constructor(bookInfo) {
     console.log('BookCard');
     this.currentPage = [];
-    this.bookInfo = new BookInfo();
+    this.bookInfo = bookInfo;
     const booksList = document.querySelector("#booksList");
     booksList.addEventListener("click", e => 
     this.onClickBookCard(e, this.currentPage));
@@ -13,14 +12,12 @@ export class BookCard {
 
   setCurrentPage(currentPage) {
     this.currentPage = currentPage;
-    // console.log(this.currentPage);
   }
 
   onClickBookCard(e, currentPage) {
     const targetDiv = e.target;
     const id = targetDiv.id;
     const selectBook = currentPage.find(item => item.id === id);
-    // console.log(selectBook);
     if (!selectBook) {
       return;
     }

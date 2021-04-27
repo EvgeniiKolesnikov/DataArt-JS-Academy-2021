@@ -9,10 +9,10 @@ export class Data {
   countPages = 0;
   pageLoaded = false;
   currentPage = [];
-  constructor() {
+  constructor(bookInfo) {
     console.log('Data');
     this.bookList = new BooksList();
-    this.bookCard = new BookCard();
+    this.bookCard = new BookCard(bookInfo);
     this.querry = '';
   }
 
@@ -38,26 +38,19 @@ export class Data {
       this.pageLoaded = true;
       spinnerBig.style.display = "none";
       spinnerMini.style.display = 'none';
-      console.log(this.currentPage);
+      // console.log(this.currentPage);
     });
   }
   
   getCountPages(page) {
     const start = page.start;
     const numFound = page.numFound;
-
-    // let countPages = Math.ceil(numFound/100);
-    // console.log(countPages);
     this.countPages = Math.ceil(numFound/100);
-
-    // let loadedPage = Math.ceil((start+100)/100);
-    // console.log(loadedPage);
     this.loadedPage = Math.ceil((start+100)/100);
   }
   
   addData() {
     if (this.loadedPage < this.countPages) {
-      // console.log('Add new data');
       this.pageLoaded = false;
       this.getData(this.querry, this.loadedPage+1)
       // console.log('новые данные ещё нужны');
