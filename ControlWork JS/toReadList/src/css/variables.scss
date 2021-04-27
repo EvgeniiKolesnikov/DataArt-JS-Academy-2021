@@ -47,6 +47,10 @@ $lightBlack7: #777777;
   --book-card--hover:#eeeeee;
 
   --bg-col:#ffffff;
+  --read-list__title:#3b3b3b;
+  --read-list__item:#383838;
+  --book-card__button:#1068d6;
+  --book-card__author:##8d8d8d;
 }
 
 // Dark theme colors
@@ -70,7 +74,7 @@ $lightBlack7: #777777;
   --button-border: #17567f;
   --button-hover: #1e4e6e;
   --button-active: #10293b;
-  --button-text: #fff;
+  --button-text: rgb(177, 177, 177);
   
   --mt: #5e5e5e;
   --book-card__title:#949494;
@@ -85,14 +89,19 @@ $lightBlack7: #777777;
 
   --book-info__title:#858585;
   --body: #181818;
-  --read-list__header:#4d4834;
+  --read-list__header:#353225;
   --book-card--read-list:#27251b;
 
   --book-card--read-list-b:#464646;
   --book-card--read:#1f2d1a;
 
   --book-card--active:#0c0c0c;
-  --book-card--hover:#333333;
+  --book-card--hover:#312e27;
 
   --bg-col:#181818;
+  --read-list__title:#a27c1f;
+  --read-list__item:#846e3a;
+
+  --book-card__button:#436084;
+  --book-card__author:#5f5e5e;
 }

@@ -11,35 +11,31 @@ export class MenuController {
     this.centerBlock =   document.querySelector("#centerBlock");
     this.rightBlock =   document.querySelector("#rightBlock");
     
-    window.addEventListener(`resize`, e => {
-      console.log(e.target.innerHeight);
-      console.log(e.target.innerWidth);
-      // this.leftBlock.style.display = '';
-      // this.centerBlock.style.display = '';
-      // this.rightBlock.style.display = '';
-    }, false);
-
-
+    // window.addEventListener(`resize`, e => {
+    //   console.log(e.target.innerHeight);
+    //   console.log(e.target.innerWidth);
+    // }, false);
 
     onInfoListBtn.addEventListener('click', e => {
       console.log('onInfoListBtn');
-
-      this.centerBlock.style.zIndex = 0;
-      this.rightBlock.style.zIndex = -10;
-
+      this.leftBlock.style.zIndex = 0;
+      this.centerBlock.style.zIndex = 1;
+      this.rightBlock.style.zIndex = 0;
     });
 
     onReadListBtn.addEventListener('click', e => {
       console.log('onReadListBtn');
-      this.centerBlock.style.zIndex = -10;
-      this.rightBlock.style.zIndex = 0;
-
-      // if (this.rightBlock.style.display == 'none' || this.rightBlock.style.display == '') {
-      //   this.rightBlock.style.display = 'block';
-      //   // this.centerBlock.style.display = 'none';
-      // } 
+      this.leftBlock.style.zIndex = 0;
+      this.centerBlock.style.zIndex = 0;
+      this.rightBlock.style.zIndex = 1;
     });
 
+    onSearchListBtn.addEventListener('click', e => {
+      console.log('onSearchListBtn');
+      this.leftBlock.style.zIndex = 1;
+      this.centerBlock.style.zIndex = 0;
+      this.rightBlock.style.zIndex = 0;
+    });
   }
 }
 

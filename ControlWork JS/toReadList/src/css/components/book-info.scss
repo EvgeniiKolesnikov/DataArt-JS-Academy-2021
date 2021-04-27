@@ -12,6 +12,9 @@
     padding: 7px 0px 7px 0px;
     /* margin: 0px 10px 10px 10px; */
     // border-bottom: 1px solid gainsboro;
+    @media (max-width: 780px) { 
+      top: 0px;
+    }
     &::before {
     content: "";
     position: absolute;
@@ -129,7 +132,7 @@
   position: sticky;
   bottom: 10px;
   background: var(--button-bg);
-  color: #FFF;
+  color: var(--button-text);
   border-radius: 5px;
   text-shadow: none;
   border: 1px solid var(--button-border);

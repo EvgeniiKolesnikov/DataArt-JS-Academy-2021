@@ -23,12 +23,10 @@
   width: 230px;
   height: calc(100% - 50px);
   @media (max-width: 500px) {
-    // display:none;
-    // position: fixed;
-    // padding: 0px 0px;
-    // right: 20px;
-    // left: 20px;
-    // z-index: 1;
+    position: fixed;
+    width: 100%;
+    margin: 0 0px 0px -17px;
+    z-index: 2;
   }
 }
 
@@ -45,18 +43,18 @@
   @media (max-width: 780px) {
     padding: 0px 0px;
     position: fixed;
-    /* right: 20px; */
+    right: 0px;
     left: 20px;
-    top: 0;
+    top: 40;
     bottom: 0;
-    z-index: 1;
+    z-index: 0;
     overflow-y: auto;
   }
   @media (max-width: 500px) {
-    // display:none;
-    // position: fixed;
-    // padding: 0px 0px;
-    // z-index: 1;
+    z-index: 0;
+    top: 40px;
+    left: auto;
+    width: 100%;
   }
   
   
@@ -73,6 +71,7 @@
   top: 40px;
   display:block;
   @media (max-width: 780px) {
+    z-index: -1;
     margin: 0px;
     padding: 0px;
     position: fixed;
@@ -83,6 +82,8 @@
     bottom: 0px;
   }
   @media (max-width: 500px) {
+    left: 0;
+    z-index: -1;
     // margin: 0px 20px 0 0;
     // padding: 0 0 0 0;
     // width: 100%;

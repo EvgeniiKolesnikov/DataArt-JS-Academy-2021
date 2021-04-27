@@ -77,7 +77,7 @@
   font-size: 13px;  
   max-height: 30px;
   overflow: hidden;
-  color: #8d8d8d;
+  color: var(--book-card__author);
 }
 
 .book-card__buttons {
@@ -95,5 +95,5 @@
   cursor: pointer;
   pointer-events: all;
   font-size: 11px;  
-  color: #318aff;
+  color: var(--book-card__button);
 }
