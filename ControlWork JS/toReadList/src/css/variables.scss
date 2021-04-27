@@ -11,40 +11,61 @@ $lightBlack7: #777777;
 // Light theme colors
 :root {
   --bg-color: #fafafa;
+  --bg-color1: #ffffff;
+  --bg-color2: #f9f9f9;
+  --bg-color3:#f1f1f1;
+  --bg-header: #202020;
+  --bg-header2: #121212;
+  --header-text: #525252;
+  --header-border:#ccc;
+  --header-border-focus:#1c62b9;
 
-  --red-hue: rgb(121, 0, 0);
-  --blue-hue: rgb(0, 57, 121);
-  --green-hue: rgb(0, 121, 16);
-  --main-hue: var(--red-hue);
+  --bg-header-input:#121212;
+  --bg-header-text:#888888;
+  --bg-header-item:#606060;
+  --bg-header-find:#f8f8f8;
+  --bg-header-ico:##818181;
 
-  --theme-darkness: 1;
+  --title: #606060;
+  --title2:#303030;
+  --subtitle: #aaaaaa;
 
-  --nav-bg-color: var(--main-hue);
-  --nav-text-color: var(--main-hue);
-  --container-bg-color: var(--main-hue);
+  --text-active: #030303;
 
-  --content-text-color: var(--main-hue);
-  --title-color: var(--bg-color);
-  --footer-bg-color: var(--main-hue);
+  --text-bg: #e6e6e6;
+  --item-bg:#e5e5e5;
 
-  --button-text-color: var(--main-hue);
+  --scroll:#909090;
 }
 
 // Dark theme colors
 :root[theme='dark'] {
   --bg-color: rgb(49, 49, 49);
+  --bg-color1: #202020;
+  --bg-color2: #181818;
+  --bg-color3:#0f0f0f;
+  --bg-header: #202020;
+  --bg-header2: #121212;
+  --header-text: #525252;
+  --header-border:#ccc;
+  --header-border-focus:#1c62b9;
+  
+  --bg-header-input:#121212;
+  --bg-header-text:#828282;
+  --bg-header-item:#ffffff;
+  --bg-header-find:#323232;
+  --bg-header-ico:#6f6f6f;
 
-  --red-hue: rgb(255, 145, 145);
-  --blue-hue: rgb(145, 174, 255);
-  --green-hue: rgb(145, 255, 154);
-  --main-hue: var(--blue-hue);
+  --title: #fdfdfd;
+  --title2:#949494;
+  --subtitle: #aaaaaa;
 
-  --theme-darkness: 1;
-  --nav-bg-color: var(--main-hue);
-  --nav-text-color: var(--main-hue);
-  --container-bg-color: var(--main-hue);
-  --content-text-color: var(--main-hue);
-  --title-color: var(--bg-color);
-  --footer-bg-color: var(--main-hue);
-  --button-text-color: var(--main-hue);
+  --text-active: #030303;
+
+  --text-bg: #e6e6e6;
+  --item-bg:#272727;
+
+  --scroll:#909090;
+
+  // --nav-bg-color: var(--main-hue);
 }
