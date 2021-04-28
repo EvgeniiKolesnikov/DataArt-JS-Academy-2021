@@ -58,7 +58,7 @@ export class ReadList {
         <div class="book-card__container">
           <span class="book-card__title">${item.title}</span> 
           ${item.language ? `<span class="book-card__lang">${item.language.join(", ")}</span>` : ``}
-          ${item.author ? `<div class="book-card__author">${item.author.join(", ")}</div>` : ``}
+          ${item.author_name ? `<div class="book-card__author">${item.author_name.join(", ")}</div>` : ``}
           <div class="book-card__buttons">
             <button class="book-card__button" id="unmarkAsReadButton">unMark as read</button>
             <button class="book-card__button" id="removefromListButton">Remove from list</button>
