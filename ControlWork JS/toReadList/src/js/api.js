@@ -1,7 +1,7 @@
 'use strict';
 export class Api {
   #apiUrlSearch = `https://openlibrary.org`;
-  #apiUrlImage = `http://covers.openlibrary.org`;
+  #apiUrlImage = `https://covers.openlibrary.org`;
   #imageSize = `L`;
 
   async searchBooks(fullQuerry) {
