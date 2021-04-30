@@ -5,64 +5,57 @@ export class ReadList {
   BookCount = 0;
   ReadCount = 0;
   constructor() {
-    console.log('ReadList');
+    // console.log('ReadList');
     this.readListBookCount = document.getElementById("readListBookCount");
     this.readListReadCount = document.getElementById("readListReadCount");
     this.readListBook = document.getElementById("readListBook");
     this.readListRead = document.getElementById("readListRead");
+
   }
 
   loadReadList(storage) {
-    // const myBooks = this.storage.get("myBooks");
     const myBooks = storage.get("myBooks");
     if (myBooks) { 
-      this.setListBookHTML(myBooks);
-      this.setListReadHTML(myBooks);
+      this.setReadListHTML(myBooks, false);   // не прочитанные книги
+      this.setReadListHTML(myBooks, true);    // прочитанные книги
       this.setListAboutHTML(myBooks)
     } 
     storage.show("myBooks");
   }
 
-  setListBookHTML(myBooks) {
-    this.readListBook.innerHTML = myBooks
-    .sort((prev, next) => {
-      if ( prev.title < next.title ) return -1;
-      if ( prev.title < next.title ) return 1;
-    })
-    .filter(item => item.read == false)
-    .map(item => 
-      `<div data-book-id="${item.id}" class="book-card book-card--read-list">
-        <div class="book-card__container">
-          <span class="book-card__title">${item.title}</span> 
-          ${item.language ? `<span class="book-card__lang">${item.language.join(", ")}</span>` : ``}
-          ${item.subtitle ? `<div class="book-card__subtitle">${item.subtitle}</div>` : ``}
-          ${item.author_name ? `<div class="book-card__author">${item.author_name.join(", ")}</div>` : ``}
-          <div class="book-card__buttons">
-            <button class="book-card__button" id="markAsReadButton">Mark as read</button>
-            <button class="book-card__button" id="removefromListButton">Remove from list</button>
-          </div>
-        </div> 
-      </div>`
-    ).join("");
-  }
+  setReadListHTML(myBooks, bool) {
+    const blueBook = `https://www.clker.com/cliparts/c/f/n/A/k/T/book-th.png`;
+    const redBook = `https://www.clker.com/cliparts/U/a/w/s/n/V/c-users-public-pictures-sample-pictures-th.png`;
+    let targetDiv = bool ? this.readListRead : this.readListBook;
 
-  setListReadHTML(myBooks) {
-    this.readListRead.innerHTML = myBooks
+    targetDiv.innerHTML = myBooks
     .sort((prev, next) => {
       if ( prev.title < next.title ) return -1;
       if ( prev.title < next.title ) return 1;
     })
-    .filter(item => item.read == true)
+    .filter(item => item.read == bool)
     .map(item => 
-      `<div data-book-id="${item.id}" class="book-card book-card--read">
-        <div class="book-card__container">
-          <span class="book-card__title">${item.title}</span> 
-          ${item.language ? `<span class="book-card__lang">${item.language.join(", ")}</span>` : ``}
-          ${item.author_name ? `<div class="book-card__author">${item.author_name.join(", ")}</div>` : ``}
-          <div class="book-card__buttons">
-            <button class="book-card__button" id="unmarkAsReadButton">unMark as read</button>
-            <button class="book-card__button" id="removefromListButton">Remove from list</button>
-          </div>
+      `<div data-book-id="${item.id}" class="book-card book-card--read-${bool}">
+        <div class="book-card__container book-card__container">
+
+          <img class="book-card__img" src="${item.cover_i 
+            ? `https://covers.openlibrary.org/b/id/${item.cover_i}-L.jpg?default=false` 
+              : `${item.isbn 
+                ? `https://covers.openlibrary.org/b/isbn/${item.isbn[0]}-L.jpg?default=false`
+              : `${blueBook}`}`
+            }" onError="this.src='${redBook}'">
+            <div class="book-card__header">
+            <span class="book-card__title">${item.title}</span> 
+            ${item.language ? `<span class="book-card__lang">${item.language.join(", ")}</span>` : ``}
+            ${item.subtitle && (!bool) ? `<div class="book-card__subtitle">${item.subtitle}</div>` : ``}
+            ${item.author_name ? `<div class="book-card__author">${item.author_name.join(", ")}</div>` : ``}
+            <div class="book-card__buttons">
+              <button class="book-card__button" id="${bool ? `un` : ``}markAsReadButton">${bool ? `un` : ``}Mark as read</button>
+              <button class="book-card__button" id="removefromListButton">Remove from list</button>
+            </div>
+            </div> 
+
+          
         </div> 
       </div>`
     ).join("");

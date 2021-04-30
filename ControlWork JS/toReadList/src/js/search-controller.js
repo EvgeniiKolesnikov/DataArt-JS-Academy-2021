@@ -2,7 +2,7 @@
 
 export class SearchController {
   constructor(data) {
-    console.log('SearchController');
+    // console.log('SearchController');
     this.data = data;
     // const booksList =     document.querySelector("#booksList");
     // const searchInput =   document.querySelector("#searchInput");

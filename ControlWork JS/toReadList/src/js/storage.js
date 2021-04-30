@@ -4,7 +4,7 @@ import { ReadList } from "./read-list";
 
 export class Storage {
   constructor() {
-    console.log('Storage');
+    // console.log('Storage');
     // this.clear();
     this.readList = new ReadList();
     this.refresh();
@@ -33,7 +33,7 @@ export class Storage {
   }
 
   show(name) {
-    console.log(`${name} = `, this.get(name));
+    // console.log(`${name} = `, this.get(name));
   }
 
 }

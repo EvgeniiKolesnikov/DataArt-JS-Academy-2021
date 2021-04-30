@@ -27,8 +27,9 @@
   padding: 0px 0px 0px 0px;
   display: flex;
   &-item {
+    display: flex;
     height: 30px;
-    width: 30px;
+    // width: 30px;
   }
   &-img {
     pointer-events: none;

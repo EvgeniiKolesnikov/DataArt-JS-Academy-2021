@@ -29,6 +29,9 @@
     border: 10px;
     border-spacing: 1cm;
   }
+  @media (max-width: 780px) {
+    height: calc(100% - 50px);
+  }
   &--books-list { 
     height: calc(100% - 88px);
   }

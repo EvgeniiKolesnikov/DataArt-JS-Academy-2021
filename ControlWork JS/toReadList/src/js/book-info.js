@@ -6,9 +6,10 @@ import { Api } from "./api";
 export class BookInfo {
   targetBook = [];
   api = new Api();
-
+  i = 0;
+  imageLinks = [];
   constructor() {
-    console.log('BookInfo');
+    // console.log('BookInfo');
     this.bookInfoHeader = document.getElementById("bookInfoHeader");
     this.bookInfoProps = document.getElementById("bookInfoProps");
   }
@@ -22,12 +23,12 @@ export class BookInfo {
     this.targetBook.read = false;
 
     let myBooks = storage.get("myBooks");
-    console.log(myBooks);
+    // console.log(myBooks);
     if (myBooks) {
       let checkBookInStorage = myBooks
       .filter(item => item.id == this.targetBook.id).length > 0;
       
-      console.log(`book "${this.targetBook.title}" in storage? = ` + checkBookInStorage);
+      // console.log(`book "${this.targetBook.title}" in storage? = ` + checkBookInStorage);
       if (checkBookInStorage) {
         bookAdded = false;
         message = "This book is already in Read List";
@@ -68,9 +69,8 @@ export class BookInfo {
       this.bookInfoProps.innerHTML += `<h3 class="book-info__subtitle">${book.subtitle}</h3>` 
     }
     this.bookInfoProps.innerHTML += `<img class="book-info__img" id="bookPicture"></img>`; 
-    if (book.isbn) {
-      this.loadBookImage(book);
-    }
+    this.imageLinks = this.getImageLinks(book);
+    this.loadBookImage(this.imageLinks, this.i);
     this.addPropsHtml(`Author:`, book.author_name?.join(", "));
     this.addPropsHtml(`Languages available:`, book.language
       ?.map(item => this.getFlagHTML(item) + item)
@@ -90,15 +90,35 @@ export class BookInfo {
     }
   }
 
-  loadBookImage(book) {
-    this.api.searchBookImage(book.isbn[0]).then(blob => {
+  getImageLinks(book) {
+    this.i = 0;               // индекс первого искомого элемента в массиве картинкок
+    const imageLinks = [];    // Все возможные части ссылок на картинки
+
+    book.cover_i && imageLinks.push(`id/${book.cover_i}`);
+    book.isbn && book.isbn.forEach(value => imageLinks.push(`isbn/${value}`));
+    book.lccn && book.lccn.forEach(value => imageLinks.push(`lccn/${value}`));
+    book.olid && book.olid.forEach(value => imageLinks.push(`olid/${value}`));
+    book.oclc && book.oclc.forEach(value => imageLinks.push(`oclc/${value}`));
+    return imageLinks;
+  }
+
+  loadBookImage(imageLinks, i) {
+    if (!imageLinks[i] || imageLinks.length == this.i) return;
+    // console.log('link = ', imageLinks[i], '; i = ', i);
+    this.api.searchBookImage(imageLinks[i]).then(blob => {
       let objectURL = window.URL.createObjectURL(blob);
       let bookPicture = document.getElementById('bookPicture');
       if (bookPicture.src === '') {
         bookPicture.src = objectURL;
       }
     })
-    .catch ((error) => console.log(error));
+    .catch (error => {
+      // console.log('error:', error);
+      // Если нету картинки по ссылке, смотрим следующую 
+      // и так, пока не найдётся или не закончатся варианты
+      this.i++;
+      this.loadBookImage(this.imageLinks, this.i);
+    });
   }
 //#region getFlagsHTML
   getFlagHTML(item) {

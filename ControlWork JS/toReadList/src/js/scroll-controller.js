@@ -4,7 +4,7 @@ export class ScrollController {
   canAddData = true;
   isLoadedNewData = false;
   constructor(data) {
-    console.log('ScrollController');
+    // console.log('ScrollController');
     // console.log(data);
     this.data = data;
     const scrollBooksList = document.querySelector('#scrollBooksList');

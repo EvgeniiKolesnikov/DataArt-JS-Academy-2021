@@ -3,7 +3,7 @@
 export class MenuController {
 
   constructor(data) {
-    console.log('MenuController');
+    // console.log('MenuController');
     const onSearchListBtn =     document.querySelector("#onSearchListBtn");
     const onInfoListBtn =   document.querySelector("#onInfoListBtn");
     const onReadListBtn =   document.querySelector("#onReadListBtn");

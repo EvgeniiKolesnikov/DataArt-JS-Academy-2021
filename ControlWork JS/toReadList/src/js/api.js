@@ -30,16 +30,17 @@ export class Api {
     }
   }
 
-  async searchBookImage(book) {
-    const url = `${this.#apiUrlImage}/b/isbn/${book}-${this.#imageSize}.jpg?default=false`;
+  async searchBookImage(bookLinks) {
+    const url = `${this.#apiUrlImage}/b/${bookLinks}-${this.#imageSize}.jpg?default=false`;
     try {
       let response = await fetch(`${url}`, {mode: 'cors'});
       if (response.ok) {
-        return await response.blob()
+        return await response.blob();
+      } else {
+      // console.error(`Request ${url} failed with ${response.status}`)
       }
-      console.error(`Request ${url} failed with ${response.status}`)
     } catch (error) {
-      console.error(`Request ${url} failed with error`, error)
+      console.error(`Request ${url} failed with error`, error);
     }
   }
 }

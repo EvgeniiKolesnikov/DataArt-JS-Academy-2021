@@ -3,7 +3,7 @@
 export class ButtonsController {
   bookId;
   constructor(storage, bookInfo) {
-    console.log('ButtonsController');
+    // console.log('ButtonsController');
     this.storage = storage;
     this.bookInfo = bookInfo;
     this.readList = document.getElementById("readList");
@@ -19,13 +19,13 @@ export class ButtonsController {
     let item = e.target;
     if (item.tagName == 'BUTTON') {
       // console.log('click button');
-      this.bookId = item.parentNode.parentNode.parentNode.dataset.bookId;
+      this.bookId = item.parentNode.parentNode.parentNode.parentNode.dataset.bookId;
       this.onChangeReadList(this.bookId, item.id);
     }  
     if (item.tagName == 'DIV') {
       // console.log('click book');
       this.bookId = item.dataset.bookId;
-      this.showBook(this.bookId);
+      this.showBook(this.bookId, e);
     }
   }
 
@@ -47,14 +47,20 @@ export class ButtonsController {
     this.storage.set("myBooks", myBooks);
   }
 
-  showBook(bookId) {
+  showBook(bookId, e) {
+    const targetDiv = e.target;
     const myBooks = this.storage.get("myBooks");
     const selectBook = myBooks.find(item => item.id == bookId);
     if (!selectBook) {
       return;
     }
+    const LastSelectedBook = document.getElementsByClassName("book-card--active");
+    if (LastSelectedBook[0]) {
+      LastSelectedBook[0].classList.remove("book-card--active");
+    }
+    this.LastSelectedBook = selectBook;
+    targetDiv.classList.add("book-card--active");
+
     this.bookInfo.setBookInfo(selectBook);
   }
 }
-
-

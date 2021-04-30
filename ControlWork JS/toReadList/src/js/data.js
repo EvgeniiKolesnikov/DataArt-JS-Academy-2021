@@ -10,7 +10,7 @@ export class Data {
   pageLoaded = false;
   currentPage = [];
   constructor(bookInfo) {
-    console.log('Data');
+    // console.log('Data');
     this.bookList = new BooksList();
     this.bookCard = new BookCard(bookInfo);
     this.querry = '';
