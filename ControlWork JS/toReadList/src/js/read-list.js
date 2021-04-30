@@ -1,4 +1,5 @@
 'use strict';
+import skin from './../img/skin.png';
 
 export class ReadList {
   books = [];
@@ -37,13 +38,12 @@ export class ReadList {
     .map(item => 
       `<div data-book-id="${item.id}" class="book-card book-card--read-${bool}">
         <div class="book-card__container book-card__container">
-
           <img class="book-card__img" src="${item.cover_i 
             ? `https://covers.openlibrary.org/b/id/${item.cover_i}-L.jpg?default=false` 
               : `${item.isbn 
                 ? `https://covers.openlibrary.org/b/isbn/${item.isbn[0]}-L.jpg?default=false`
-              : `${blueBook}`}`
-            }" onError="this.src='${redBook}'">
+              : `${skin}`}`
+            }" onError="this.src='${skin}'">
             <div class="book-card__header">
             <span class="book-card__title">${item.title}</span> 
             ${item.language ? `<span class="book-card__lang">${item.language.join(", ")}</span>` : ``}
@@ -54,8 +54,6 @@ export class ReadList {
               <button class="book-card__button" id="removefromListButton">Remove from list</button>
             </div>
             </div> 
-
-          
         </div> 
       </div>`
     ).join("");

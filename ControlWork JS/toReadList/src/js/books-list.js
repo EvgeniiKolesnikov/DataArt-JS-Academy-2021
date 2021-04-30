@@ -1,5 +1,8 @@
 'use strict';
+import skin from './../img/skin.png';
 
+// import url from "file!./file.png"
+// import image from '/../src/img/skin.png';
 export class BooksList {
   constructor() {
     // console.log('BooksList');
@@ -16,7 +19,7 @@ export class BooksList {
     this.currentPage = page.docs;
     const blueBook = `https://www.clker.com/cliparts/c/f/n/A/k/T/book-th.png`;
     const redBook = `https://www.clker.com/cliparts/U/a/w/s/n/V/c-users-public-pictures-sample-pictures-th.png`;
-    const skinBook = `./../src/img/skin.png`;
+
     const booksListHTML = this.currentPage.reduce((acc, item) => {
       return (acc +
         `<div id="${item.id}" class="book-card">
@@ -26,8 +29,8 @@ export class BooksList {
             ? `https://covers.openlibrary.org/b/id/${item.cover_i}-L.jpg?default=false` 
               : `${item.isbn 
                 ? `https://covers.openlibrary.org/b/isbn/${item.isbn[0]}-L.jpg?default=false`
-              : `${blueBook}`}`
-            }" onError="this.src='${redBook}'">
+              : `${skin}`}`
+            }" onError="this.src='${skin}'">
             <div class="book-card__header">
               <span class="book-card__title">${item.title}</span> 
               ${item.language ? `<span class="book-card__lang">${item.language.join(", ")}</span>` : ``}
@@ -37,6 +40,7 @@ export class BooksList {
         </div>`
       );
     }, "");
+
     booksList.innerHTML += booksListHTML;
     booksShown.innerHTML = `Shown books: ${this.numShown(page)}`;
     booksFound.innerHTML = `Found books: ${page.numFound}`;
